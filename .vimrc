@@ -13,3 +13,6 @@ let g:neocomplete#enable_at_startup = 1
 " Search key
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
+
+" Change color on line numbers
+highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
