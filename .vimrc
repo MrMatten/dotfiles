@@ -1,41 +1,29 @@
-execute pathogen#infect()
-syntax enable 
-let base16colorspace=256
-try
-    colorscheme base16-tomorrow 
-catch
-endtry
-filetype plugin indent on
-call pathogen#helptags()
+set nocompatible              " be iMproved, required
+filetype off                  " required
 
-" Make jsx syntax available on .js files
-let g:jsx_ext_required = 0
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+"
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'tpope/vim-sensible'
+Plugin 'tpope/vim-fugitive'
+Plugin 'chriskempson/base16-vim'
+Plugin 'mustache/vim-mustache-handlebars'
+Plugin 'scrooloose/nerdtree'
+Plugin 'mtscout6/vim-cjsx'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
+Plugin 'ekalinin/Dockerfile.vim'
+Plugin 'ervandew/supertab'
+Plugin 'vim-syntastic/syntastic'
+Plugin 'godlygeek/tabular'
 
-" Autocomplete on startup
-let g:neocomplete#enable_at_startup = 1
+call vundle#end()            
+filetype plugin indent on    
 
-" Set line numbers as default
-set number
+source ~/.vim/setup/silversearcher.vim
+source ~/.vim/setup/selecta.vim
 
-" Change color on line numbers
-highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
-
-" Silver_searcher ag
-let g:ackprg = 'ag --nogroup --nocolor --column'
-
-" Selecta to fuzzy search
-" Run a given vim command on the results of fuzzy selecting from a given shell command. See usage below.
-function! SelectaCommand(choice_command, selecta_args, vim_command)
-  try
-    let selection = system(a:choice_command . " | selecta " . a:selecta_args)
-  catch /Vim:Interrupt/
-    " Swallow the ^C so that the redraw below happens; otherwise there will be leftovers from selecta on the screen
-    redraw!
-    return
-  endtry
-  redraw!
-  exec a:vim_command . " " . selection
-endfunction
-
-" Find all files in all non-dot directories starting in the working directory. Fuzzy select one of those. Open the selected file with :e.
-nnoremap <C-f> :call SelectaCommand("find  * -type f", "", ":e")<cr>
