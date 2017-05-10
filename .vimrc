@@ -16,14 +16,16 @@ Plugin 'mtscout6/vim-cjsx'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
-Plugin 'ekalinin/Dockerfile.vim'
-Plugin 'ervandew/supertab'
-Plugin 'vim-syntastic/syntastic'
-Plugin 'godlygeek/tabular'
 
 call vundle#end()            
-filetype plugin indent on    
+filetype plugin indent on
 
+source ~/.vim/setup/autocmd.vim
+source ~/.vim/setup/dash.vim
+source ~/.vim/setup/basics.vim
+source ~/.vim/setup/keybindings.vim
+source ~/.vim/setup/silversearcher.vim
+source ~/.vim/setup/selecta.vim
 source ~/.vim/setup/silversearcher.vim
 source ~/.vim/setup/selecta.vim
 
