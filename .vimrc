@@ -17,6 +17,15 @@ Plugin 'kchmck/vim-coffee-script'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'elmcast/elm-vim'
+Plugin 'scrooloose/syntastic'
+Plugin 'ervandew/supertab'
+Plugin 'ekalinin/Dockerfile.vim'
+Plugin 'kien/rainbow_parentheses.vim'
+Plugin 'ervandew/supertab'
+Plugin 'godlygeek/tabular'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+Plugin 'roman/golden-ratio'
 
 call vundle#end()            
 filetype plugin indent on
