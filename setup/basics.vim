@@ -13,6 +13,12 @@ endtry
 " Make jsx available in .js files
 let g:jsx_ext_required = 0
 
+" Elm syntax settings for Syntastic
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+
+let g:elm_syntastic_show_warnings = 1
+
 set number " Turn on line numbers 
 highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
 set ruler " Show cursor position

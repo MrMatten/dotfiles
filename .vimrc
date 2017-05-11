@@ -16,6 +16,7 @@ Plugin 'mtscout6/vim-cjsx'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
+Plugin 'elmcast/elm-vim'
 
 call vundle#end()            
 filetype plugin indent on
