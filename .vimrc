@@ -26,6 +26,7 @@ Plugin 'godlygeek/tabular'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'roman/golden-ratio'
+Plugin 'posva/vim-vue'
 
 call vundle#end()            
 filetype plugin indent on
