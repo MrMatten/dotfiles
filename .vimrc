@@ -27,6 +27,9 @@ Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'roman/golden-ratio'
 Plugin 'posva/vim-vue'
+Plugin 'isRuslan/vim-es6'
+Plugin 'epilande/vim-es2015-snippets'
+Plugin 'epilande/vim-react-snippets'
 
 call vundle#end()            
 filetype plugin indent on
