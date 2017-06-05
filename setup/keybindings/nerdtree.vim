@@ -1,2 +1,2 @@
 " Quick commands for NERDTREE
-nnoremap <leader>n :NERDTreeToggle
+nnoremap <leader>n :NERDTreeToggle<CR>
