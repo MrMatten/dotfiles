@@ -28,6 +28,7 @@ Plugin 'posva/vim-vue'
 Plugin 'isRuslan/vim-es6'
 Plugin 'epilande/vim-es2015-snippets'
 Plugin 'epilande/vim-react-snippets'
+Plugin 'udalov/kotlin-vim'
 
 call vundle#end()            
 filetype plugin indent on
