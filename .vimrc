@@ -41,4 +41,5 @@ source ~/.vim/setup/silversearcher.vim
 source ~/.vim/setup/selecta.vim
 source ~/.vim/setup/silversearcher.vim
 source ~/.vim/setup/selecta.vim
+source ~/.vim/setup/syntastic.vim
 
