@@ -39,7 +39,5 @@ source ~/.vim/setup/basics.vim
 source ~/.vim/setup/keybindings.vim
 source ~/.vim/setup/silversearcher.vim
 source ~/.vim/setup/selecta.vim
-source ~/.vim/setup/silversearcher.vim
-source ~/.vim/setup/selecta.vim
 source ~/.vim/setup/syntastic.vim
 
