@@ -15,98 +15,61 @@ brew tap homebrew/php
 brew install homebrew/dupes/grep
 
 binaries=(
-autoconf
-automake
-bash
-boost
-cloc
-cloog018
-cmake
-colordiff
-coreutils
-cppunit
-ffmpeg
-findutils
-flac
-freetype
-gcc
-gcc49
-gdbm
-gettext
-git
-glew
-gmp
-gmp4
-gnupg
-go
-gor
-graphviz
-grep
-htop-osx
-hub
-ical-buddy
-icu4c
-imagemagick
-isl
-isl011
-jpeg
-keybase
-lame
-libevent
-libgpg-error
-libksba
-libmpc
-libmpc08
-libogg
-libpng
-libtiff
-libtool
-libvo-aacenc
-libvorbis
-libxml2
-libyaml
-lighttpd
-lynx
-mad
-memcached
-mitmproxy
-mongodb
-mono
-mp3info
-mpfr
-mpfr2
-mysql
-nginx
-ngrok
-nmap
-node
-openssl
-pcre
-php56
-php56-memcache
-pkg-config
-postgresql
-python
-python3
-readline
-reattach-to-user-namespace
-redis
-rename
-sfml
-sox
-sqlite
-the_silver_searcher
-thefuck
-tmux
-tokyo-cabinet
-tree
-unixodbc
-vim
-webkit2png
-wget
-x264
-xvid
-zsh
+  automake
+  bash
+  boost
+  colordiff
+  coreutils
+  findutils
+  gcc
+  gcc49
+  gdbm
+  gettext
+  git
+  glew
+  gmp
+  gmp4
+  gnupg
+  go
+  gor
+  grep
+  ical-buddy
+  imagemagick
+  jpeg
+  keybase
+  lighttpd
+  lynx
+  mad
+  memcached
+  mitmproxy
+  mongodb
+  mono
+  mp3info
+  mysql
+  nginx
+  ngrok
+  nmap
+  node
+  openssl
+  php56
+  php56-memcache
+  pkg-config
+  postgresql
+  python
+  python3
+  redis
+  rename
+  sqlite
+  tmux
+  tokyo-cabinet
+  tree
+  unixodbc
+  vim
+  webkit2png
+  wget
+  x264
+  xvid
+  zsh
 )
 
 for i in "${binaries[@]}"

@@ -4,29 +4,18 @@ brew tap caskroom/cask
 brew tap caskroom/versions
 
 apps=(
-    1password
-    alfred
-    appcleaner
-    caffeine
-    chefdk
-    cyberduck
-    dropbox
-    goofy
-    google-chrome
-    google-drive
-    hipchat
-    iterm2-beta
-    java
-    macid
-    postman
-    rescuetime
-    sequel-pro
-    silverlight
-    skype
-    spotify
-teamviewer
-utorrent
-vlc
+  1password
+  caffeine
+  dropbox
+  google-chrome
+  google-drive
+  iterm2-beta
+  intellij-idea
+  java
+  postman
+  skype
+  utorrent
+  vlc
 )
 
 brew cask install --appdir="/Applications" ${apps[@]}
