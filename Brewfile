@@ -10,10 +10,6 @@ brew install coreutils  # Install GNU core utilities (those that come with OS X 
 brew install findutils  # Install GNU `find`, `locate`, `updatedb`, and `xargs`, g-prefixed
 brew install bash       # Install Bash 4
 
-brew tap homebrew/dupes
-brew tap homebrew/php
-brew install homebrew/dupes/grep
-
 binaries=(
   automake
   bash
@@ -36,23 +32,17 @@ binaries=(
   ical-buddy
   imagemagick
   jpeg
-  keybase
   lighttpd
   lynx
   mad
   memcached
   mitmproxy
   mongodb
-  mono
   mp3info
   mysql
   nginx
-  ngrok
   nmap
-  node
   openssl
-  php56
-  php56-memcache
   pkg-config
   postgresql
   python
@@ -61,7 +51,6 @@ binaries=(
   rename
   sqlite
   tmux
-  tokyo-cabinet
   tree
   unixodbc
   vim
@@ -80,5 +69,4 @@ done
 brew install go --cross-compile-all
 brew tap thoughtbot/formulae
 
-brew linkapps
 brew cleanup
