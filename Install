@@ -46,7 +46,7 @@ function install_packages {
   symlink "$DOTFILES/git/gitconfig" ".gitconfig"
   symlink "$DOTFILES/git/gitignore_global" ".gitignore_global"
   symlink "$DOTFILES/vim/vimrc" ".vimrc"
-  symlink "$DOTFILES/vim/setup" ".vim"
+  symlink "$DOTFILES/vim/" ".vim"
   symlink "$DOTFILES/zsh/oh-my-zsh/" ".oh-my-zsh"
   symlink "$DOTFILES/zsh/zshrc" ".zshrc"
   symlink "$DOTFILES/zsh/profile" ".profile"
