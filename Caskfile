@@ -8,15 +8,15 @@ apps=(
   caffeine
   dropbox
   google-chrome
-  google-drive
-  iterm2-beta
+  ngrok
+  iterm2
   intellij-idea
   java
   postman
   skype
-  utorrent
+  sublime-text
   vlc
 )
 
-brew cask install --appdir="/Applications" ${apps[@]}
+brew cask install ${apps[@]}
 brew cleanup
