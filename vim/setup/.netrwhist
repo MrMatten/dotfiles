@@ -1,0 +1,6 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/Users/mathiasegekvist/.nvm'
+let g:netrw_dirhist_2='/Users/mathiasegekvist/Urge/Urge/.git'
+let g:netrw_dirhist_3='/Users/mathiasegekvist/dotfiles/vim/setup/setup/keybindings'
+let g:netrw_dirhist_4='/Users/mathiasegekvist/.config'

@@ -1,6 +1,6 @@
 [user]
-  email = megekvist@me.com
-  name = Mathias Egekvist
+	email = megekvist@me.com
+	name = Mathias Egekvist
 
 [color]
     diff = auto
@@ -123,8 +123,16 @@
 	user = MrMatten
 
 [core]
-	excludesfile = ~/.gitignore_global
+	excludesfile = /Users/mathiasegekvist/.gitignore_global
 	editor = vim
 
 [push]
 	default = simple
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[commit]
+	template = /Users/mathiasegekvist/.stCommitMsg
