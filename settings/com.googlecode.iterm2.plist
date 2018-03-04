@@ -30,8 +30,6 @@
 	<true/>
 	<key>CommandSelection</key>
 	<true/>
-	<key>Control</key>
-	<integer>1</integer>
 	<key>CopyLastNewline</key>
 	<false/>
 	<key>CopySelection</key>
@@ -2184,7 +2182,11 @@
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
+<<<<<<< HEAD
+			<string>OperatorMono-Light 16</string>
+=======
 			<string>Menlo-Regular 14</string>
+>>>>>>> 5f85ed5831117d66d19ba679ed4c755310858a02
 			<key>Option Key Sends</key>
 			<integer>2</integer>
 			<key>Prompt Before Closing 2</key>
@@ -2372,7 +2374,11 @@
 	<key>NoSyncHaveWarnedAboutPasteConfirmationChange</key>
 	<true/>
 	<key>NoSyncInstallationId</key>
+<<<<<<< HEAD
+	<string>7C7CCAD2-1C90-4455-BF2F-8AFAA88A29EA</string>
+=======
 	<string>CE622437-63F0-4702-9613-6EE2CBD747A6</string>
+>>>>>>> 5f85ed5831117d66d19ba679ed4c755310858a02
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
@@ -2451,9 +2457,17 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
+<<<<<<< HEAD
 	<date>2018-02-22T23:28:36Z</date>
+=======
+<<<<<<< HEAD
+	<date>2017-11-22T12:41:23Z</date>
+=======
+	<date>2017-09-30T14:18:42Z</date>
+>>>>>>> b916f800319c2d813504e76e0568bdc32b47e80f
 	<key>SUSendProfileInfo</key>
 	<false/>
+>>>>>>> 5f85ed5831117d66d19ba679ed4c755310858a02
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>ShowBookmarkName</key>
@@ -2484,6 +2498,8 @@
 	<integer>10</integer>
 	<key>TripleClickSelectsFullWrappedLines</key>
 	<false/>
+	<key>UKCrashReporterLastCrashReportDate</key>
+	<real>1508403456</real>
 	<key>URLHandlersByGuid</key>
 	<dict/>
 	<key>UseBorder</key>
@@ -2504,9 +2520,19 @@
 	<string></string>
 	<key>findIgnoreCase_iTerm</key>
 	<true/>
+	<key>findMode_iTerm</key>
+	<integer>0</integer>
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
+<<<<<<< HEAD
 	<string>3.1.6beta3</string>
+=======
+<<<<<<< HEAD
+	<string>3.1.5.beta.2</string>
+=======
+	<string>3.1.3.beta.1</string>
+>>>>>>> 5f85ed5831117d66d19ba679ed4c755310858a02
+>>>>>>> b916f800319c2d813504e76e0568bdc32b47e80f
 </dict>
 </plist>
