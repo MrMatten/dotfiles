@@ -8,4 +8,4 @@ function! SearchDash()
 		    execute s:cmd
 		      redraw!
 	      endfunction
-	      noremap <leader>d :call SearchDash()<CR>
+	      noremap <leader>t :call SearchDash()<CR>
