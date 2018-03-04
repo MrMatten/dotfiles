@@ -49,6 +49,8 @@ binaries=(
   python3
   redis
   rename
+  the_silver_searcher
+  selecta
   sqlite
   tmux
   tree
