@@ -14,3 +14,8 @@ noremap <A-k> <C-W>+
 " Open splits with leader
 noremap <leader>vs :vs %<cr>
 noremap <leader>ss :split %<cr>
+
+" Tabs
+noremap <leader>tn :tabnext %<cr>
+noremap <leader>tp :tabpreviouse %<cr>
+noremap <leader>tv :tabnew %<cr>
