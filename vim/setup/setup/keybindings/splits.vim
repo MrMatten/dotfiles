@@ -17,5 +17,5 @@ noremap <leader>ss :split %<cr>
 
 " Tabs
 noremap <leader>tn :tabnext %<cr>
-noremap <leader>tp :tabpreviouse %<cr>
+noremap <leader>tp :tabprevious %<cr>
 noremap <leader>tv :tabnew %<cr>
