@@ -16,6 +16,7 @@ binaries=(
   boost
   colordiff
   coreutils
+  dep
   findutils
   gcc
   gcc49
