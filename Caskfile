@@ -4,7 +4,6 @@ brew tap caskroom/cask
 brew tap caskroom/versions
 
 apps=(
-  1password
   caffeine
   dropbox
   google-chrome
@@ -14,9 +13,19 @@ apps=(
   postman
   docker
   skype
+  sourcetree
   sublime-text
   vlc
 )
 
 brew cask install ${apps[@]}
-brew cleanup
+
+# Install docker
+open https://www.docker.com/products/docker\#/mac
+
+# Install Jetbrains Toolbox
+open https://www.jetbrains.com/toolbox/app/
+
+# cleanup
+brew cleanup --force
+rm -f -r /Library/Caches/Homebrew/*
