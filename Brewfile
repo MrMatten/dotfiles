@@ -28,7 +28,7 @@ appStore=(
 
 for i in "${appStore[@]}"
 do
-  mas install $i
+  mas install "$i"
 done
   
 binaries=(
@@ -82,10 +82,8 @@ binaries=(
 
 for i in "${binaries[@]}"
 do
-  brew install $i
+  brew install "$i"
 done
 
 brew install go --cross-compile-all
 brew tap thoughtbot/formulae
-
-brew cleanup
