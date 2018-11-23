@@ -1,1 +1,4 @@
-
+./Brewfile
+./Caskfile
+./AppStore
+./InstallSettings
