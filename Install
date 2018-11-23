@@ -3,6 +3,10 @@
 set -e
 ROOT=${1:-~}
 
+./Brewfile
+./Caskfile
+main
+
 function main {
   test -d "$ROOT/.config" || mkdir -p "$ROOT/.config"
   install_packages
