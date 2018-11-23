@@ -15,15 +15,16 @@ brew install coreutils  # Install GNU core utilities (those that come with OS X 
 brew install findutils  # Install GNU `find`, `locate`, `updatedb`, and `xargs`, g-prefixed
 brew install bash       # Install Bash 4
 
+# Xcode, Magnet, 1Password, Pocket, Slack, Trello, Whatsapp
 appStore=(
-  497799835 # Xcode
-  441258766 # Magnet
-  1333542190 # 1Password
-  568494494 # Pocket
-  803453959 # Slack
-  1176895641 # Spark
-  1278508951 # Trello
-  1147396723 # Whatsapp
+  497799835
+  441258766
+  1333542190
+  568494494
+  803453959
+  1176895641
+  1278508951
+  1147396723
 )
 
 for i in "${appStore[@]}"
