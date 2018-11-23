@@ -47,7 +47,7 @@ function install_packages {
   symlink "$DOTFILES/git/gitignore_global" ".gitignore_global"
   symlink "$DOTFILES/vim/vimrc" ".vimrc"
   symlink "$DOTFILES/vim/" ".vim"
-  symlink "$DOTFILES/zsh/oh-my-zsh/" ".oh-my-zsh"
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
   symlink "$DOTFILES/zsh/zshrc" ".zshrc"
   symlink "$DOTFILES/zsh/profile" ".profile"
   symlink "$DOTFILES/settings/idea" ".idea"
