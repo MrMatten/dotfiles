@@ -3,23 +3,6 @@
 brew tap caskroom/cask
 brew tap caskroom/versions
 
-# Xcode, Magnet, 1Password, Pocket, Slack, Trello, Whatsapp
-appStore=(
-  497799835
-  441258766
-  1333542190
-  568494494
-  803453959
-  1176895641
-  1278508951
-  1147396723
-)
-
-for i in "${appStore[@]}"
-do
-  mas install "$i"
-done
-
 apps=(
   caffeine
   dropbox
