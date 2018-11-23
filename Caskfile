@@ -18,7 +18,10 @@ apps=(
   vlc
 )
 
-brew cask install ${apps[@]}
+for i in "${appStore[@]}"
+do
+  brew cask install "$i"
+done
 
 # Install docker
 open https://www.docker.com/products/docker\#/mac
