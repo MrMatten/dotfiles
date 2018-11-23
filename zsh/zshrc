@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/mathiasegekvist/.oh-my-zsh
@@ -87,8 +87,6 @@ alias urgedo='cd ~/Urge/DO'
 alias urgekbn='cd ~/Urge/Kubernetes/src/gitlab.com/main'
 alias urgeios='cd ~/Urge/iOS'
 
-export JAVA_HOME=`/usr/libexec/java_home -v 9.0.4`
-
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
@@ -97,6 +95,7 @@ export PATH="$PATH:/opt/yarn-[version]/bin"
 export GOPATH=$HOME/Urge/Kubernetes
 export PATH=$PATH:$GOPATH/bin
 
+export PATH="$PATH:$(brew --prefix)/bin"
 export PATH="/Library/Frameworks/Python.framework/Versions/3.6/bin:${PATH}"
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"

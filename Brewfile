@@ -20,6 +20,7 @@ binaries=(
   boost
   colordiff
   dep
+  docker-cloud
   gcc
   gcc49
   gdbm
