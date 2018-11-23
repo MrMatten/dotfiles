@@ -6,18 +6,36 @@ fi
 
 brew update
 brew upgrade            # Upgrade any already-installed formulae
+
+brew tap mas-cli/tap
+brew tap-pin mas-cli/tap
+brew install mas
+
 brew install coreutils  # Install GNU core utilities (those that come with OS X are outdated)
 brew install findutils  # Install GNU `find`, `locate`, `updatedb`, and `xargs`, g-prefixed
 brew install bash       # Install Bash 4
 
+appStore=(
+  497799835 # Xcode
+  441258766 # Magnet
+  1333542190 # 1Password
+  568494494 # Pocket
+  803453959 # Slack
+  1176895641 # Spark
+  1278508951 # Trello
+  1147396723 # Whatsapp
+)
+
+for i in "${appStore[@]}"
+do
+  mas install $i
+done
+  
 binaries=(
   automake
-  bash
   boost
   colordiff
-  coreutils
   dep
-  findutils
   gcc
   gcc49
   gdbm
@@ -40,12 +58,10 @@ binaries=(
   mitmproxy
   mongodb
   mp3info
-  mysql
   nginx
   nmap
   openssl
   pkg-config
-  postgresql
   python
   python3
   redis
