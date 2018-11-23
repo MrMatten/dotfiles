@@ -10,9 +10,9 @@ apps=(
   google-chrome
   ngrok
   iterm2
-  intellij-idea
   java
   postman
+  docker
   skype
   sublime-text
   vlc
