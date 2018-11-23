@@ -14,23 +14,6 @@ brew install mas
 brew install coreutils  # Install GNU core utilities (those that come with OS X are outdated)
 brew install findutils  # Install GNU `find`, `locate`, `updatedb`, and `xargs`, g-prefixed
 brew install bash       # Install Bash 4
-
-# Xcode, Magnet, 1Password, Pocket, Slack, Trello, Whatsapp
-appStore=(
-  497799835
-  441258766
-  1333542190
-  568494494
-  803453959
-  1176895641
-  1278508951
-  1147396723
-)
-
-for i in "${appStore[@]}"
-do
-  mas install "$i"
-done
   
 binaries=(
   automake
