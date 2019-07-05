@@ -29,6 +29,17 @@ open https://www.docker.com/products/docker\#/mac
 # Install Jetbrains Toolbox
 open https://www.jetbrains.com/toolbox/app/
 
+# Install Battle.net and Origin
+open https://www.blizzard.com/en-gb/apps/battle.net/desktop
+open https://www.origin.com/dnk/en-us/store/download
+
+# Install Proton clients
+open https://protonmail.com/bridge/install
+open https://protonvpn.com/download/
+
+# Install Ghost client
+open https://ghost.org/downloads/
+
 # cleanup
 brew cleanup --force
 rm -f -r /Library/Caches/Homebrew/*

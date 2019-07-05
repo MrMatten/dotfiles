@@ -1,6 +1,6 @@
 [user]
-	email = creativeegekvist@gmail.com
-	name = Mathias Egekvist
+	email = megekvist@me.com
+	name = Mr_Matten
 
 [color]
     diff = auto
@@ -132,7 +132,7 @@
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
 [mergetool "sourcetree"]
-	cmd = /private/var/folders/xr/q3srhpwd1zl7g4hkzyy9rlt80000gn/T/AppTranslocation/85E3BB49-50E0-48DE-818E-9156A91825B6/d/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
 [commit]
 	template = /Users/mathiasegekvist/.stCommitMsg
