@@ -39,8 +39,7 @@ set backupskip=/tmp/*,/private/tmp*
 set undodir=~/.vim/undo
 
 set tabstop=4 " Global tab width
-set backspace=2
-set shiftwidth=2 " The same
+set shiftwidth=4 " The same
 set smarttab
 set expandtab " Use spaces instead of tabs
 set laststatus=2 " Show the status line all the time

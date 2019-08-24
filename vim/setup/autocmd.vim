@@ -9,6 +9,7 @@ function! SetScreenTitle()
 	  autocmd BufEnter * call SetScreenTitle()
 
 	  autocmd Filetype html setlocal ts=2 sts=2 sw=2
+      autocmd FileType yaml setlocal sw=2 ts=2
 	  autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
 	  autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
 	  autocmd Filetype coffeescript setlocal ts=2 sts=2 sw=2
@@ -19,29 +20,29 @@ function! SetScreenTitle()
 
 " Rename current file, thanks Gary Bernhardt via Ben Orenstein
 function! RenameFile()
-	  let old_name = expand('%')
-	    let new_name = input('New file name: ', expand('%'), 'file')
-	      if new_name != '' && new_name != old_name
-		          exec ':saveas ' . new_name
-			      exec ':silent !rm ' . old_name
-			          redraw!
-				    endif
-			    endfunction
+    let old_name = expand('%')
+    let new_name = input('New file name: ', expand('%'), 'file')
+    if new_name != '' && new_name != old_name
+        exec ':saveas ' . new_name
+        exec ':silent !rm ' . old_name
+        redraw!
+    endif
+endfunction
 
-			    noremap <leader>ren :call RenameFile()<cr>
-			    nnoremap <leader>rm :call delete(expand('%')) \| bdelete!<CR>
+noremap <leader>ren :call RenameFile()<cr>
+nnoremap <leader>rm :call delete(expand('%')) \| bdelete!<CR>
 
-			    function s:MkNonExDir(file, buf)
-				        if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
-						        let dir=fnamemodify(a:file, ':h')
-							        if !isdirectory(dir)
-									            call mkdir(dir, 'p')
-										            endif
-											        endif
-											endfunction
-											augroup BWCCreateDir
-												    autocmd!
-												        autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
-												augroup END
+function s:MkNonExDir(file, buf)
+    if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
+        let dir=fnamemodify(a:file, ':h')
+        if !isdirectory(dir)
+            call mkdir(dir, 'p')
+        endif
+    endif
+endfunction
+augroup BWCCreateDir
+    autocmd!
+    autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
+augroup END
 
-												cnoremap %% <C-R>=expand('%:h').'/'<cr>
+cnoremap %% <C-R>=expand('%:h').'/'<cr>

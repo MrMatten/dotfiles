@@ -17,7 +17,7 @@ Plugin 'kchmck/vim-coffee-script'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'elmcast/elm-vim'
-Plugin 'fatih/vim-go'
+Plugin 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 Plugin 'scrooloose/syntastic'
 Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'kien/rainbow_parentheses.vim'
@@ -39,6 +39,7 @@ filetype plugin indent on
 source ~/.vim/setup/autocmd.vim
 source ~/.vim/setup/dash.vim
 source ~/.vim/setup/basics.vim
+source ~/.vim/setup/go.vim
 source ~/.vim/setup/keybindings.vim
 source ~/.vim/setup/silversearcher.vim
 source ~/.vim/setup/selecta.vim

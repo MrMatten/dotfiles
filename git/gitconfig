@@ -136,3 +136,5 @@
 	trustExitCode = true
 [commit]
 	template = /Users/mathiasegekvist/.stCommitMsg
+[url "git@gitlab.com:"]
+	insteadOf = https://gitlab.com/

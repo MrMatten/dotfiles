@@ -15,9 +15,9 @@ if ! mas account > /dev/null; then
 fi
 
 apps=(
+  1333542190 # 1 Password
   497799835 # Xcode
   441258766 # Magnet
-  1333542190 # 1 Password
   568494494 # Pocket
   803453959 # Slack
   1176895641 # Spark
