@@ -1,22 +1,16 @@
 function! SetScreenTitle()
-	  silent !clear
-	    let titlestring = "Program: vim | File: " . expand("%") . ""
-	      let cmd = "!~/Scripts/name.sh \"".titlestring."\""
-	        silent execute(cmd)
-		  redraw!
-	  endfunction
+    silent !clear
+    let titlestring = "Program: vim | File: " . expand("%") . ""
+    let cmd = "!~/Scripts/name.sh \"".titlestring."\""
+    silent execute(cmd)
+    redraw!
+endfunction
 
-	  autocmd BufEnter * call SetScreenTitle()
+autocmd BufEnter * call SetScreenTitle()
 
-	  autocmd Filetype html setlocal ts=2 sts=2 sw=2
-      autocmd FileType yaml setlocal sw=2 ts=2
-	  autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
-	  autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
-	  autocmd Filetype coffeescript setlocal ts=2 sts=2 sw=2
-	  autocmd Filetype php setlocal ts=4 sts=4 sw=4
-	  autocmd Filetype gitcommit setlocal spell textwidth=72
-	  au BufRead,BufNewFile *.hbs set filetype=html.handlebars
-	  au BufRead,BufNewFile *.handlebars set filetype=html.handlebars
+autocmd Filetype gitcommit setlocal spell textwidth=72
+au BufRead,BufNewFile *.hbs set filetype=html.handlebars
+au BufRead,BufNewFile *.handlebars set filetype=html.handlebars
 
 " Rename current file, thanks Gary Bernhardt via Ben Orenstein
 function! RenameFile()
