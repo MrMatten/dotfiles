@@ -1,0 +1,15 @@
+#!/bin/bash
+
+if ! type "npm" > /dev/null; then
+
+fi
+
+packages=(
+    elm-oracle
+    neovim
+)
+
+for i in "${packages[@]}"
+do
+  npm install -g "$i"
+done
