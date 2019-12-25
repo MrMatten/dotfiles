@@ -21,6 +21,7 @@ binaries=(
   colordiff
   dep
   docker-cloud
+  fzf
   gcc
   gcc49
   gdbm
