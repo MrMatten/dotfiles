@@ -12,7 +12,9 @@ let mapleader = ","
 set rtp+=/usr/local/opt/fzf
 
 call plug#begin('~/.vim/plugged')
-    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    if has('nvim')
+        Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    endif
     Plug 'chriskempson/base16-vim'
     Plug 'ervandew/supertab'
     Plug 'itchyny/lightline.vim'
@@ -27,7 +29,6 @@ call plug#begin('~/.vim/plugged')
 call plug#end()
 
 " Open FZF results in Quickfix (Ctrl+A and then Ctrl+Q)
-
 let $FZF_DEFAULT_OPTS = '--bind ctrl-a:select-all'
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 
@@ -42,6 +43,26 @@ let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
   \ 'ctrl-x': 'split',
   \ 'ctrl-v': 'vsplit' }
+
+" Mappings for IO operations
+noremap <leader>w :w<CR>
+noremap <leader>q :q<CR>
+noremap <leader>f :FZF<CR>
+
+" copy to clipboard
+noremap <leader>y "*y
+
+" Quick commands for NERDTREE
+nnoremap <leader>n :NERDTreeToggle<CR>
+
+" Formatting
+nmap <silent> <leader>xml :%!xmllint --format -<CR>
+nmap <silent> <leader>json :%!python -m json.tool<CR>
+nmap <silent> <leader>lint :ALEFix<CR>
+
+" Search current word
+noremap <leader>ag :Ag <c-r>=expand("<cword>")<cr><Enter>
+nnoremap \ :Ag<SPACE>
 
 " Deoplete
 let g:deoplete#enable_at_startup = 1
@@ -76,6 +97,22 @@ nmap <silent> <leader>g :TestVisit<CR>
 
 " Clear search highlights
 noremap <silent><leader>/ :nohls<CR>
+
+" Use 'h', 'j', 'k' and 'l' to nagivate splits
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+nnoremap <Tab> <C-w>w
+
+" Open splits with leader
+noremap <leader>vs :vs %<cr>
+noremap <leader>ss :split %<cr>
+
+" Tabs
+noremap <leader>tr :tabNext <cr>
+noremap <leader>tp :tabprevious <cr>
+noremap <leader>tn :tabnew <cr>
 
 set showcmd                                 " Display incomplete commands
 set showmode                                " Display the mode you're in
