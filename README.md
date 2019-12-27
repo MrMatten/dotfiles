@@ -1,11 +1,15 @@
-# .vim
-My vim settings
+# Install
 
-### Start by installing VundleVim for plugins 
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-
-### Then clone the repo
+## Fullsetup
+### Clone the repo
 git clone https://github.com/MrMatten/dotfiles ~/
 
 ### Install
-./Install
+./Fullsetup
+
+## Partsetup
+Install any of the scripts seperatly
+./Brewfile
+./Caskfile
+./AppStore
+./NPM
