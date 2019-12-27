@@ -43,6 +43,7 @@ binaries=(
   memcached
   mitmproxy
   mp3info
+  neovim
   nginx
   nmap
   openssl

@@ -1,8 +1,10 @@
-#!/bin/bash
+#!/bin/zsh
 
-if ! type "npm" > /dev/null; then
-
-fi
+function install_nvm {
+  if ! type "nvm"; then
+    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+  fi
+}
 
 packages=(
     elm-oracle
