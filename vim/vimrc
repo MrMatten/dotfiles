@@ -18,10 +18,12 @@ call plug#begin('~/.vim/plugged')
         Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
     endif
     Plug 'chriskempson/base16-vim'
+    Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
     Plug 'ervandew/supertab'
     Plug 'itchyny/lightline.vim'
     Plug 'janko/vim-test'
     Plug 'junegunn/fzf.vim'
+    Plug '/usr/local/opt/fzf'
     Plug 'kristijanhusak/vim-hybrid-material'
     Plug 'scrooloose/nerdtree'
     Plug 'sheerun/vim-polyglot'
@@ -52,7 +54,7 @@ noremap <leader>q :q<CR>
 noremap <leader>f :FZF<CR>
 
 " copy to clipboard
-noremap <leader>y "*y
+noremap <leader>c "*y
 
 " Quick commands for NERDTREE
 nnoremap <leader>n :NERDTreeToggle<CR>
@@ -156,11 +158,4 @@ set termguicolors
 
 filetype plugin indent on
 syntax on
-" source ~/.vim/setup/autocmd.vim
-" source ~/.vim/setup/dash.vim
-" source ~/.vim/setup/basics.vim
-" source ~/.vim/setup/keybindings.vim
-" source ~/.vim/setup/silversearcher.vim
-" source ~/.vim/setup/selecta.vim
-" source ~/.vim/setup/syntastic.vim
 
