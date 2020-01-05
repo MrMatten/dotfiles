@@ -8,6 +8,7 @@ function install_nvm {
 
 packages=(
     elm-oracle
+    elm-format
     neovim
 )
 

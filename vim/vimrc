@@ -70,6 +70,7 @@ nnoremap \ :Ag<SPACE>
 
 " Deoplete
 let g:deoplete#enable_at_startup = 1
+let g:deoplete#auto_complete_delay = 200
 let g:enable_italic_font = 1
 
 "Lightline
