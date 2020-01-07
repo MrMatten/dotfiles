@@ -1,0 +1,10 @@
+#!/bin/zsh
+
+function install_applications {
+    ./Brewfile
+    ./Caskfile
+    ./AppStore
+    ./NPM
+}
+
+install_applications
