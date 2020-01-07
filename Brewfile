@@ -1,8 +1,7 @@
 #!/bin/bash
 
-if ! type "brew" > /dev/null; then
-  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-fi
+command -v brew >/dev/null 2>&1 || { echo >&2 "Installing Homebrew Now"; \
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"; }
 
 brew update
 brew upgrade            # Upgrade any already-installed formulae
