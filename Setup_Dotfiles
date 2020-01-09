@@ -33,12 +33,12 @@ function settings {
 }
 
 function symlink() {
-  TARGET=$ROOT/${2:-.$1}
+  TARGET=~/$2
   echo $TARGET
   if [[ -e $TARGET ]]; then
     rm -rf $TARGET
   fi
-  ln -nfs $ROOT/$1 $TARGET
+  ln -nfs ~/$1 $TARGET
 }
 
 setup_dotfiles
