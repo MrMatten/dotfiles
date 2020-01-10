@@ -13,3 +13,7 @@ Install any of the scripts seperatly
 ./Caskfile
 ./AppStore
 ./NPM
+
+## Problems
+Problems setting up zshrc and oh-my-zsh also with spaceship theme. 
+Order of installation, brew needs to be installed to install nvm. 
