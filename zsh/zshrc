@@ -2,43 +2,46 @@
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/mathiasegekvist/.oh-my-zsh
+export ZSH="/Users/mathiasegekvist/.oh-my-zsh"
 
-# Set name of the theme to load. Optionally, if you set this to "random"
-# it'll load a random theme each time that oh-my-zsh is loaded.
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+# Theme name see inspiration https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="spaceship"
+SPACESHIP_BATTERY_SHOW=false
 
+# Which plugins would you like to load?
+# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
-# ssh
-export SSH_KEY_PATH="~/.ssh/rsa_id"
+# User configuration
 
-# aliases 
-export URGE_DIR="~/Urge/go/src/gitlab.com/URGE/" 
-alias urgemain="cd $URGE_DIR/Main"
-alias urgeserver="cd $URGE_DIR/Main/server"
-alias urgeclient="cd $URGE_DIR/Main/client"
-alias urgeinfo="cd $URGE_DIR/Main/information-api"
-alias urgeios="cd $URGE_DIR/iOS"
+# You may need to manually set your language environment
+export LANG=da_DK.UTF-8
 
-export SaveMyDay_DIR="~/Library/Mobile\ Documents/com\~apple\~CloudDocs/SaveMyDay/"
-alias smdweb="cd $SaveMyDay_DIR/Hjemmeside"
+# Preferred editor for local and remote sessions
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='nvim'
+fi
 
-export PRIVATE_DIR="~/Google\ Drive/SaveMyDay/Opgaver/Mathias\ Egekvist"
-alias gotomathias="cd $PRIVATE_DIR"
+# For a full list of active aliases, run `alias`.
+alias iCloud="cd ~/Library/Mobile\ Documents/com\~apple\~CloudDocs"
+alias savemyday="cd ~/Library/Mobile\ Documents/com\~apple\~CloudDocs/SaveMyDay"
+alias savemydaychallenges="cd ~/Library/Mobile\ Documents/com\~apple\~CloudDocs/SaveMyDay/Challenges"
+alias tourgedocs="cd ~/Google\ Docs/Urge/"
+alias tourgeios="cd ~/Library/Mobile\ Documents/com\~apple\~CloudDocs/SaveMyDay/Opgaver/Urge/iOS"
+alias urgeios="tourgeios && nvim ~/Library/Mobile\ Documents/com\~apple\~CloudDocs/SaveMyDay/Opgaver/Urge/iOS"
+alias tourgecode="cd ~/go/src/Main"
+alias urgecode="tourgecode && nvim ~/go/src/Main"
+alias vimKeys="cat ~/dotfiles/vim/vimrc"
+
+export GOPATH=$HOME/go
+export GOBIN=$GOPATH/bin
+export PATH=$GOBIN:$PATH
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-export PATH="$PATH:/opt/yarn-[version]/bin"
-
-export GOPATH=$HOME/Urge/go/
-export PATH=$GOPATH/bin:$PATH
-
-export PATH="$PATH:$(brew --prefix)/bin"
-export PATH="/Library/Frameworks/Python.framework/Versions/3.6/bin:${PATH}"
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
