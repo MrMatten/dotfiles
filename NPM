@@ -8,6 +8,7 @@ packages=(
     elm-format
     neovim
     spaceship-zsh-theme
+    apollo
 )
 
 for i in "${packages[@]}"
