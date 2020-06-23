@@ -1,6 +1,6 @@
 [user]
-	email = megekvist@me.com
-	name = Mr_Matten
+	email = maeg@stofa.dk
+	name = Mathias Egekvist
 
 [color]
     diff = auto
@@ -138,3 +138,5 @@
 	template = /Users/mathiasegekvist/.stCommitMsg
 [url "git@gitlab.com:"]
 	insteadOf = https://gitlab.com/
+[gui]
+	recentrepo = /Users/mathiasegekvist/Projects/ios-webtv
