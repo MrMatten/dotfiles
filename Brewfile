@@ -1,7 +1,7 @@
 #!/bin/bash
 
 command -v brew >/dev/null 2>&1 || { echo >&2 "Installing Homebrew Now"; \
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"; }
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"; }
 
 brew update
 brew upgrade            # Upgrade any already-installed formulae
@@ -44,6 +44,7 @@ binaries=(
   mp3info
   neovim
   nginx
+  nvm
   nmap
   openssl
   pkg-config

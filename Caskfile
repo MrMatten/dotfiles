@@ -1,7 +1,7 @@
 #!/bin/bash
 
-brew tap caskroom/cask
-brew tap caskroom/versions
+brew tap homebrew/cask-cask 
+brew tap homebrew/cask-versions
 
 apps=(
   caffeine
