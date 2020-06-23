@@ -23,6 +23,8 @@ do
   brew cask install "$i"
 done
 
+sudo gem install -n /usr/local/bin cocoapods
+
 # Install docker
 open https://www.docker.com/products/docker\#/mac
 

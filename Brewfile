@@ -20,6 +20,7 @@ binaries=(
   colordiff
   dep
   docker-cloud
+  fastlane
   fzf
   gcc
   gcc49

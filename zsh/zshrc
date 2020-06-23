@@ -38,9 +38,20 @@ alias tourgecode="cd ~/go/src/Main"
 alias urgecode="tourgecode && nvim ~/go/src/Main"
 alias vimKeys="cat ~/dotfiles/vim/vimrc"
 
+alias tostofaios="cd ~/Projects/ios-webtv"
+alias editstofaios="tostofaios edit"
+
+alias edit="nvim ."
+
+# Go
 export GOPATH=$HOME/go
 export GOBIN=$GOPATH/bin
 export PATH=$GOBIN:$PATH
+
+# Ruby
+export PATH="/usr/local/opt/ruby/bin:$PATH"
+export LDFLAGS="-L/usr/local/opt/ruby/lib"
+export CPPFLAGS="-I/usr/local/opt/ruby/include"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
