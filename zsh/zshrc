@@ -38,7 +38,10 @@ alias tourgecode="cd ~/go/src/Main"
 alias urgecode="tourgecode && nvim ~/go/src/Main"
 alias vimKeys="cat ~/dotfiles/vim/vimrc"
 
+alias toXcodeTemplates="cd /Users/mathiasegekvist/Library/Developer/Xcode/Templates/"
+
 alias tostofaios="cd ~/Projects/ios-webtv"
+alias tostofastriber="cd ~/Projects/stribe-tool"
 alias editstofaios="tostofaios edit"
 
 alias edit="nvim ."
@@ -59,3 +62,4 @@ export NVM_DIR="$HOME/.nvm"
 
 
 source "/Users/mathiasegekvist/.oh-my-zsh/custom/themes/spaceship.zsh-theme"
+export PATH="/usr/local/sbin:$PATH"

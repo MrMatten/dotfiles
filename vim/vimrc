@@ -69,11 +69,6 @@ nmap <silent> <leader>lint :ALEFix<CR>
 noremap <leader>ag :Ag <c-r>=expand("<cword>")<cr><Enter>
 nnoremap \ :Ag<SPACE>
 
-" Deoplete
-" let g:deoplete#enable_at_startup = 1
-" let g:deoplete#auto_complete_delay = 200
-" let g:enable_italic_font = 1
-
 " Language Server Coc
 set cmdheight=2
 set updatetime=300
@@ -107,6 +102,13 @@ function! s:show_documentation()
     call CocAction('doHover')
   endif
 endfunction
+
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
+
+" Formatting selected code.
+xmap <leader>o  <Plug>(coc-format-selected)
+nmap <leader>o  <Plug>(coc-format-selected)
 
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
