@@ -30,12 +30,11 @@ fi
 # For a full list of active aliases, run `alias`.
 alias iCloud="cd ~/Library/Mobile\ Documents/com\~apple\~CloudDocs"
 alias savemyday="cd ~/Library/Mobile\ Documents/com\~apple\~CloudDocs/SaveMyDay"
-alias savemydaychallenges="cd ~/Library/Mobile\ Documents/com\~apple\~CloudDocs/SaveMyDay/Challenges"
 alias tourgedocs="cd ~/Google\ Docs/Urge/"
-alias tourgeios="cd ~/Library/Mobile\ Documents/com\~apple\~CloudDocs/SaveMyDay/Opgaver/Urge/iOS"
-alias urgeios="tourgeios && nvim ~/Library/Mobile\ Documents/com\~apple\~CloudDocs/SaveMyDay/Opgaver/Urge/iOS"
-alias tourgecode="cd ~/go/src/Main"
-alias urgecode="tourgecode && nvim ~/go/src/Main"
+alias tourgeios="cd ~/go/src/Urge/iOS"
+alias urgeios="tourgeios && edit" 
+alias tourgecode="cd ~/go/src/Urge/Main"
+alias urgecode="tourgecode && edit"
 alias vimKeys="cat ~/dotfiles/vim/vimrc"
 
 alias toXcodeTemplates="cd /Users/mathiasegekvist/Library/Developer/Xcode/Templates/"
@@ -45,6 +44,10 @@ alias tostofastriber="cd ~/Projects/stribe-tool"
 alias editstofaios="tostofaios edit"
 
 alias edit="nvim ."
+alias vpnconnect="~/scripts/vpnconnect.sh"
+alias vpndisconnect='/opt/cisco/anyconnect/bin/vpn disconnect'
+alias vpnstate='/opt/cisco/anyconnect/bin/vpn state'
+alias diffac='/Applications/AppCode.app/Contents/MacOS/appcode diff '
 
 # Go
 export GOPATH=$HOME/go
