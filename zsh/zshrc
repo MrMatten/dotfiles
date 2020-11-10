@@ -30,24 +30,25 @@ fi
 # For a full list of active aliases, run `alias`.
 alias iCloud="cd ~/Library/Mobile\ Documents/com\~apple\~CloudDocs"
 alias savemyday="cd ~/Library/Mobile\ Documents/com\~apple\~CloudDocs/SaveMyDay"
-alias tourgedocs="cd ~/Google\ Docs/Urge/"
-alias tourgeios="cd ~/go/src/Urge/iOS"
-alias urgeios="tourgeios && edit" 
-alias tourgecode="cd ~/go/src/Urge/Main"
-alias urgecode="tourgecode && edit"
-alias vimKeys="cat ~/dotfiles/vim/vimrc"
+alias "to-urge-docs"="cd ~/Google\ Docs/Urge/"
+alias "to-urge-ios"="cd ~/go/src/Urge/iOS"
+alias "to-urge-code"="cd ~/go/src/Urge/Main"
+alias "vim-keys"="cat ~/dotfiles/vim/vimrc"
+alias shortcuts="cd ~/dotfiles/shortcuts"
+alias "jetbrains-shortcuts"="shortcuts && cat JetbrainsCheatSheat.md"
 
-alias toXcodeTemplates="cd /Users/mathiasegekvist/Library/Developer/Xcode/Templates/"
+alias "to-xcode-templates"="cd /Users/mathiasegekvist/Library/Developer/Xcode/Templates/"
 
-alias tostofaios="cd ~/Projects/ios-webtv"
-alias tostofastriber="cd ~/Projects/stribe-tool"
-alias editstofaios="tostofaios edit"
+alias "to-stofa-ios"="cd ~/Projects/ios-webtv"
+alias "to-stofa-striber"="cd ~/Projects/stribe-tool"
 
 alias edit="nvim ."
 alias vpnconnect="~/scripts/vpnconnect.sh"
 alias vpndisconnect='/opt/cisco/anyconnect/bin/vpn disconnect'
-alias vpnstate='/opt/cisco/anyconnect/bin/vpn state'
-alias diffac='/Applications/AppCode.app/Contents/MacOS/appcode diff '
+alias vpnstatus='/opt/cisco/anyconnect/bin/vpn state'
+
+alias safdef="defaultbrowser safari"
+alias firdef="defaultbrowser firefox"
 
 # Go
 export GOPATH=$HOME/go
