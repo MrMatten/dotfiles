@@ -41,6 +41,7 @@ alias "to-xcode-templates"="cd /Users/mathiasegekvist/Library/Developer/Xcode/Te
 
 alias "to-stofa-ios"="cd ~/Projects/ios-webtv"
 alias "to-stofa-striber"="cd ~/Projects/stribe-tool"
+alias "to-stofa-chromecast"="cd ~/Projects/chromecast-v2"
 
 alias edit="nvim ."
 alias vpnconnect="~/scripts/vpnconnect.sh"
@@ -49,6 +50,9 @@ alias vpnstatus='/opt/cisco/anyconnect/bin/vpn state'
 
 alias safdef="defaultbrowser safari"
 alias firdef="defaultbrowser firefox"
+
+alias sshdevurge="ssh -i ~/.ssh/backup root@178.128.194.99"
+alias sshurge="ssh -i ~/.ssh/backup root@167.71.42.4"
 
 # Go
 export GOPATH=$HOME/go
