@@ -25,6 +25,7 @@ function settings {
   symlink "$DOTFILES/git/gitconfig" ".gitconfig"
   symlink "$DOTFILES/git/gitignore_global" ".gitignore_global"
   symlink "$DOTFILES/vim/vimrc" ".vimrc"
+  symlink "$DOTFILES/vim/vimrc" ".ideavimrc"
   symlink "$DOTFILES/vim/" ".vim"
   symlink "$DOTFILES/nvim/" ".config/nvim"
   symlink "$DOTFILES/zsh/zshrc" ".zshrc"

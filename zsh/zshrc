@@ -55,6 +55,7 @@ alias sshdevurge="ssh -i ~/.ssh/backup root@178.128.194.99"
 alias sshurge="ssh -i ~/.ssh/backup root@167.71.42.4"
 
 # Go
+export GO111MODULE=auto
 export GOPATH=$HOME/go
 export GOBIN=$GOPATH/bin
 export PATH=$GOBIN:$PATH
@@ -71,3 +72,6 @@ export NVM_DIR="$HOME/.nvm"
 
 source "/Users/mathiasegekvist/.oh-my-zsh/custom/themes/spaceship.zsh-theme"
 export PATH="/usr/local/sbin:$PATH"
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+

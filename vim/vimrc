@@ -8,29 +8,28 @@ set fileencoding=utf-8
 let mapleader = ","
 
 if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+                \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
 call plug#begin('~/.vim/plugged')
-    if has('nvim')
-        Plug 'neoclide/coc.nvim', {'branch': 'release'}
-        Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-    endif
-    Plug 'chriskempson/base16-vim'
-    Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-"    Plug 'ervandew/supertab'
-    Plug 'itchyny/lightline.vim'
-    Plug 'janko/vim-test'
-    Plug 'junegunn/fzf.vim'
-    Plug '/usr/local/opt/fzf'
-    Plug 'kristijanhusak/vim-hybrid-material'
-    Plug 'scrooloose/nerdtree'
-    Plug 'sheerun/vim-polyglot'
-    Plug 'tpope/vim-commentary'
-    Plug 'tpope/vim-fugitive'
-    Plug 'w0rp/ale'
+if has('nvim')
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+endif
+Plug 'chriskempson/base16-vim'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'itchyny/lightline.vim'
+Plug 'janko/vim-test'
+Plug 'junegunn/fzf.vim'
+Plug '/usr/local/opt/fzf'
+Plug 'kristijanhusak/vim-hybrid-material'
+Plug 'scrooloose/nerdtree'
+Plug 'sheerun/vim-polyglot'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
+Plug 'w0rp/ale'
 call plug#end()
 
 " Open FZF results in Quickfix (Ctrl+A and then Ctrl+Q)
@@ -38,16 +37,16 @@ let $FZF_DEFAULT_OPTS = '--bind ctrl-a:select-all'
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 
 function! s:build_quickfix_list(lines)
-  call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
-  copen
-  cc
+    call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
+    copen
+    cc
 endfunction
 
 let g:fzf_action = {
-  \ 'ctrl-q': function('s:build_quickfix_list'),
-  \ 'ctrl-t': 'tab split',
-  \ 'ctrl-x': 'split',
-  \ 'ctrl-v': 'vsplit' }
+            \ 'ctrl-q': function('s:build_quickfix_list'),
+            \ 'ctrl-t': 'tab split',
+            \ 'ctrl-x': 'split',
+            \ 'ctrl-v': 'vsplit' }
 
 " Mappings for IO operations
 noremap <leader>w :w<CR>
@@ -74,68 +73,70 @@ set cmdheight=2
 set updatetime=300
 set shortmess+=c
 if has("patch-8.1.1564")
-  set signcolumn=number
+    set signcolumn=number
 else
-  set signcolumn=yes
+    set signcolumn=yes
 endif
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
+            \ pumvisible() ? "\<C-n>" :
+            \ <SID>check_back_space() ? "\<TAB>" :
+            \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
+    if (index(['vim','help'], &filetype) >= 0)
+        execute 'h '.expand('<cword>')
+    else
+        call CocAction('doHover')
+    endif
 endfunction
 
-" Symbol renaming.
-nmap <leader>rn <Plug>(coc-rename)
+if has('nvim')
+    " Symbol renaming.
+    nmap <leader>rn <Plug>(coc-rename)
 
-" Formatting selected code.
-xmap <leader>o  <Plug>(coc-format-selected)
-nmap <leader>o  <Plug>(coc-format-selected)
+    " Formatting selected code.
+    xmap <leader>o  <Plug>(coc-format-selected)
+    nmap <leader>o  <Plug>(coc-format-selected)
 
-" Use `[g` and `]g` to navigate diagnostics
-" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
+    " Use `[g` and `]g` to navigate diagnostics
+    " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+    nmap <silent> [g <Plug>(coc-diagnostic-prev)
+    nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
-" GoTo code navigation.
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
+    " GoTo code navigation.
+    exec "nmap <silent> gd <Plug>(coc-definition)"
+    nmap <silent> gy <Plug>(coc-type-definition)
+    nmap <silent> gi <Plug>(coc-implementation)
+    nmap <silent> gr <Plug>(coc-references)
+endif
 
 
 " Lightline
 let g:lightline = {
-      \ 'colorscheme': 'one',
-      \ }
+            \ 'colorscheme': 'one',
+            \ }
 
 " Rename and delete commands
 function! RenameFile()
-  let old_name = expand('%')
-  let new_name = input('New file name: ', expand('%'), 'file')
-  if new_name != '' && new_name != old_name
-    exec ':saveas ' . new_name
-    exec ':silent !rm ' . old_name
-    redraw!
-  endif
+    let old_name = expand('%')
+    let new_name = input('New file name: ', expand('%'), 'file')
+    if new_name != '' && new_name != old_name
+        exec ':saveas ' . new_name
+        exec ':silent !rm ' . old_name
+        redraw!
+    endif
 endfunction
 
 noremap <leader>ren :call RenameFile()<cr>
@@ -187,6 +188,7 @@ set scrolloff=6                             " Show 3 lines of context around the
 set showmatch
 set title                                   " Set the terminal's title
 set visualbell                              " No beeping
+set noerrorbells                            " Stop the beeping idea vim
 set noeb vb t_vb=                           " Stop the god damn beeps!
 set nobackup                                " Don't make a backup before overwriting a file
 set nowritebackup                           " And again
