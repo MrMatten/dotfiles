@@ -3,7 +3,7 @@ if ! type "brew" > /dev/null; then
 fi
 
 if ! type "mas" > /dev/null; then
-  brew install argon/mas/mas
+  brew install mas
 fi
 
 if ! mas account > /dev/null; then
@@ -11,6 +11,7 @@ if ! mas account > /dev/null; then
   read email
   echo "Can I also have your app specific password?"
   read password
+  echo -e $email $password 
   mas signin $email "$password"
 fi
 

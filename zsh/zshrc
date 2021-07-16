@@ -44,7 +44,7 @@ alias "to-stofa-striber"="cd ~/Projects/stribe-tool"
 alias "to-stofa-chromecast"="cd ~/Projects/chromecast-v2"
 
 alias edit="nvim ."
-alias vpnconnect="~/scripts/vpnconnect.sh"
+alias vpnconnect="~/Library/Mobile\ Documents/com~apple~CloudDocs/scripts/vpnconnect.sh"
 alias vpndisconnect='/opt/cisco/anyconnect/bin/vpn disconnect'
 alias vpnstatus='/opt/cisco/anyconnect/bin/vpn state'
 
@@ -75,3 +75,6 @@ export PATH="/usr/local/sbin:$PATH"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
+
+
+source "/Users/mathiasegekvist/.oh-my-zsh/custom/themes/spaceship.zsh-theme"
