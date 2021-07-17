@@ -1,45 +1,45 @@
-#!/bin/zsh
-function setup_dotfiles {
-  test -d "$ROOT/.config" || mkdir -p "$ROOT/.config"
+DOTFILES="dotfiles"
 
-  settings
-  zsh
-  oh_my_zsh
+function setup_dotfiles {
+    test -d "$ROOT/.config" || mkdir -p "$ROOT/.config"
+
+    vim
+    nvim
+    oh_my_zsh
+    settings
 }
 
-function zsh {
-  if ! type "/usr/local/bin/zsh" > /dev/null; then
-    brew install zsh
-  fi
-  chsh -s /usr/local/bin/zsh $USER
-  echo "/usr/local/bin/zsh" | sudo tee -a /etc/shells
+function vim {
+    symlink "$DOTFILES/vim/vimrc" ".vimrc"
+    symlink "$DOTFILES/vim/vimrc" ".ideavimrc"
+    symlink "$DOTFILES/vim/" ".vim"
+}
+
+function nvim {
+    mkdir ~/.config/nvim
+    symlink "$DOTFILES/nvim/init.vim" ".config/nvim/init.vim"
 }
 
 function oh_my_zsh {
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 }
 
 function settings {
-  DOTFILES="dotfiles"
-  symlink "$DOTFILES/ag/agignore" ".agignore"
-  symlink "$DOTFILES/git/gitconfig" ".gitconfig"
-  symlink "$DOTFILES/git/gitignore_global" ".gitignore_global"
-  symlink "$DOTFILES/vim/vimrc" ".vimrc"
-  symlink "$DOTFILES/vim/vimrc" ".ideavimrc"
-  symlink "$DOTFILES/vim/" ".vim"
-  symlink "$DOTFILES/nvim/" ".config/nvim"
-  symlink "$DOTFILES/zsh/zshrc" ".zshrc"
-  symlink "$DOTFILES/zsh/profile" ".profile"
-  symlink "$DOTFILES/settings/idea" ".idea"
+    symlink "$DOTFILES/ag/agignore" ".agignore"
+    symlink "$DOTFILES/git/gitconfig" ".gitconfig"
+    symlink "$DOTFILES/git/gitignore_global" ".gitignore_global"
+    symlink "$DOTFILES/zsh/zshrc" ".zshrc"
+    symlink "$DOTFILES/zsh/profile" ".profile"
+    symlink "$DOTFILES/settings/idea" ".idea"
 }
 
 function symlink() {
-  TARGET=~/$2
-  echo $TARGET
-  if [[ -e $TARGET ]]; then
-    rm -rf $TARGET
-  fi
-  ln -nfs ~/$1 $TARGET
+    TARGET=~/$2
+    echo $TARGET
+    if [[ -e $TARGET ]]; then
+        rm -rf $TARGET
+    fi
+    ln -nfs ~/$1 $TARGET
 }
 
 setup_dotfiles

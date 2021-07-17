@@ -1,11 +1,9 @@
-#!/bin/zsh
-#
 set -e
 ROOT=${1:-~}
 
 function main {
-    ./Install_Applications
     ./Setup_Dotfiles
+    ./Install_Applications
 }
 
 main

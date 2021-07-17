@@ -39,14 +39,7 @@ alias "jetbrains-shortcuts"="shortcuts && cat JetbrainsCheatSheat.md"
 
 alias "to-xcode-templates"="cd /Users/mathiasegekvist/Library/Developer/Xcode/Templates/"
 
-alias "to-stofa-ios"="cd ~/Projects/ios-webtv"
-alias "to-stofa-striber"="cd ~/Projects/stribe-tool"
-alias "to-stofa-chromecast"="cd ~/Projects/chromecast-v2"
-
 alias edit="nvim ."
-alias vpnconnect="~/Library/Mobile\ Documents/com~apple~CloudDocs/scripts/vpnconnect.sh"
-alias vpndisconnect='/opt/cisco/anyconnect/bin/vpn disconnect'
-alias vpnstatus='/opt/cisco/anyconnect/bin/vpn state'
 
 alias safdef="defaultbrowser safari"
 alias firdef="defaultbrowser firefox"
@@ -74,7 +67,5 @@ source "/Users/mathiasegekvist/.oh-my-zsh/custom/themes/spaceship.zsh-theme"
 export PATH="/usr/local/sbin:$PATH"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
-
 
 source "/Users/mathiasegekvist/.oh-my-zsh/custom/themes/spaceship.zsh-theme"
