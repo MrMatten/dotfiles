@@ -1,7 +1,11 @@
 #!/bin/bash
 
-command -v brew >/dev/null 2>&1 || { echo >&2 "Installing Homebrew Now"; \
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"; }
+command -v brew >/dev/null 2>&1 || { 
+	echo >&2 "Installing Homebrew Now"; \
+	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"; \
+ 	echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/mathiasegekvist/.zprofile \
+	eval "$(/opt/homebrew/bin/brew shellenv)"
+}
 
 brew update
 brew upgrade            # Upgrade any already-installed formulae
