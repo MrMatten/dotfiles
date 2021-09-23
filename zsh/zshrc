@@ -28,7 +28,7 @@ if [[ -n $SSH_CONNECTION ]]; then
 fi
 
 # For a full list of active aliases, run `alias`.
-alias iCloud="cd ~/Library/Mobile\ Documents/com\~apple\~CloudDocs"
+alias icloud="cd ~/Library/Mobile\ Documents/com\~apple\~CloudDocs"
 alias savemyday="cd ~/Library/Mobile\ Documents/com\~apple\~CloudDocs/SaveMyDay"
 alias "to-urge-docs"="cd ~/Google\ Docs/Urge/"
 alias "to-urge-ios"="cd ~/go/src/Urge/iOS"
@@ -49,6 +49,7 @@ alias sshurge="ssh -i ~/.ssh/backup root@167.71.42.4"
 
 # Go
 export GO111MODULE=auto
+export GOPRIVATE=gitlab.com/URGE
 export GOPATH=$HOME/go
 export GOBIN=$GOPATH/bin
 export PATH=$GOBIN:$PATH

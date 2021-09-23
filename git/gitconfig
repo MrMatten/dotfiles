@@ -1,6 +1,9 @@
 [user]
-	email = mathias@urge.today
-	name = Mathias
+	email = megekvist@me.com
+	name = Mr_Matten
+
+[url "git@gitlab.com:"]
+    insteadOf = https://gitlab.com/
 
 [color]
     diff = auto
@@ -8,7 +11,6 @@
     branch = auto
     interactive = auto
     ui = auto
-
 
 [alias]
     aliases = config --get-regexp alias

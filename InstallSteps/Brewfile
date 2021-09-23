@@ -19,6 +19,7 @@ binaries=(
   fastlane
   fzf
   go
+  golang-migrate
   grep
   neovim
   nginx
@@ -27,6 +28,7 @@ binaries=(
   rename
   the_silver_searcher
   selecta
+  sqlc
   tree
   vim
   wget
