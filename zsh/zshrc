@@ -54,6 +54,9 @@ export GOPATH=$HOME/go
 export GOBIN=$GOPATH/bin
 export PATH=$GOBIN:$PATH
 
+# Python
+alias python="/opt/homebrew/bin/python3"
+
 # Ruby
 export PATH="/usr/local/opt/ruby/bin:$PATH"
 export LDFLAGS="-L/usr/local/opt/ruby/lib"

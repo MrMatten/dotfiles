@@ -31,6 +31,7 @@ function settings {
     symlink "$DOTFILES/zsh/zshrc" ".zshrc"
     symlink "$DOTFILES/zsh/profile" ".profile"
     symlink "$DOTFILES/settings/idea" ".idea"
+    symlink "$DOTFILES/tmux/tmux.conf" ".tmux.conf"
 }
 
 function symlink() {

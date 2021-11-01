@@ -22,8 +22,8 @@ Plug 'chriskempson/base16-vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'itchyny/lightline.vim'
 Plug 'janko/vim-test'
+Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
-Plug '/usr/local/opt/fzf'
 Plug 'kristijanhusak/vim-hybrid-material'
 Plug 'scrooloose/nerdtree'
 Plug 'sheerun/vim-polyglot'
@@ -35,6 +35,9 @@ call plug#end()
 " Open FZF results in Quickfix (Ctrl+A and then Ctrl+Q)
 let $FZF_DEFAULT_OPTS = '--bind ctrl-a:select-all'
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
+
+" Add homebrew fzf to the vim path:
+set rtp+=/usr/local/opt/fzf
 
 function! s:build_quickfix_list(lines)
     call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
@@ -168,6 +171,12 @@ noremap <leader>ss :split %<cr>
 noremap <leader>tr :tabNext <cr>
 noremap <leader>tp :tabprevious <cr>
 noremap <leader>tn :tabnew <cr>
+
+" Golang
+noremap <leader>å :GoImports <cr>
+
+" Python
+let g:syntastic_python_python_exec = 'python3' 
 
 set showcmd                                 " Display incomplete commands
 set showmode                                " Display the mode you're in
