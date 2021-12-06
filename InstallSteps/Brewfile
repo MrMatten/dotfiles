@@ -23,6 +23,7 @@ binaries=(
   grep
   neovim
   nginx
+  nnn
   nvm
   openssl
   rename

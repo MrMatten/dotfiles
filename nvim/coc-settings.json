@@ -13,6 +13,10 @@
       "rootPatterns": ["go.mod"],
       "trace.server": "verbose",
       "filetypes": ["go"]
+    },
+    "sql": {
+        "formatOptions": "postgresql",
+        "filetypes": ["sql"]
     }
   }
 }
