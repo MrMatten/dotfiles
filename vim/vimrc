@@ -28,11 +28,9 @@ if has('nvim')
     Plug 'hrsh7th/cmp-vsnip'
     Plug 'hrsh7th/vim-vsnip'
 
-    " Smooth scroll
-    Plug 'karb94/neoscroll.nvim'
-
     " Dashboard
     Plug 'glepnir/dashboard-nvim'
+
     " File tree
     Plug 'luukvbaal/nnn.nvim'
 
@@ -65,7 +63,7 @@ call plug#end()
 
 " Dashboard settings
 let g:dashboard_default_executive ='fzf'
-nmap <Leader>ss :<C-u>SessionSave<CR>
+nmap <Leader>sa :<C-u>SessionSave<CR>
 nmap <Leader>sl :<C-u>SessionLoad<CR>
 nnoremap <silent> <Leader>fh :DashboardFindHistory<CR>
 nnoremap <silent> <Leader>ff :DashboardFindFile<CR>
@@ -81,6 +79,15 @@ set completeopt=menu,menuone,noselect,noinsert
 lua << EOF
 -- Setup nvim-cmp.
 local cmp = require'cmp'
+
+local has_words_before = function()
+  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+end
+
+local feedkey = function(key, mode)
+  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
+end
 
 cmp.setup({
     snippet = {
@@ -145,20 +152,10 @@ cmp.setup({
   -- Setup lspconfig.
   local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
   require'lspconfig'.gopls.setup { capabilities = capabilities }
-  require'lspconfig'.pyright.setup { 
+  require'lspconfig'.pylsp.setup { 
       capabilities = capabilities,
-      settings = {
-          python = {
-              analysis = {
-                  useLibraryCodeForTypes = false
-              }
-          }
-      }
-   }
+  }
 EOF
-
-" Smooth scroll
-lua require'neoscroll'.setup()
 
 " Setup for nnn
 lua require"nnn".setup()
@@ -196,14 +193,8 @@ noremap <leader>f :FZF<CR>
 " copy to clipboard
 noremap <leader>c "*y
 
-" Formatting
-nmap <silent> <leader>xml :%!xmllint --format -<CR>
-nmap <silent> <leader>json :%!python -m json.tool<CR>
-nmap <silent> <leader>lint :ALEFix<CR>
-
 " Search current word
 noremap <leader>ag :Ag <c-r>=expand("<cword>")<cr><Enter>
-nnoremap \ :Ag<SPACE>
 
 " Lightline
 let g:lightline = {
@@ -224,6 +215,12 @@ endfunction
 noremap <leader>ren :call RenameFile()<cr>
 nnoremap <leader>rm :call delete(expand('%')) \| bdelete!<CR>
 
+" Rename variable
+" For local replace
+nnoremap gr gd[{V%::s/<C-R>///gc<left><left><left>
+
+" For global replace
+nnoremap gR gD:%s/<C-R>///gc<left><left><left>
 
 " Tests
 nmap <silent> <leader>t :TestNearest<CR>
@@ -247,9 +244,9 @@ noremap <leader>vs :vs %<cr>
 noremap <leader>ss :split %<cr>
 
 " Tabs
-noremap <leader>tr :tabNext <cr>
+noremap <leader>tn :tabNext <cr>
 noremap <leader>tp :tabprevious <cr>
-noremap <leader>tn :tabnew <cr>
+noremap <leader>tc :tabnew <cr>
 
 " Golang
 noremap <leader>å :GoImports <cr>
