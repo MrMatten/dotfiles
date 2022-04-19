@@ -24,8 +24,7 @@ First run of FullSetup doesn't move past linking config files
     Also says nvm and npn not found
 iTerm doesn't show up in the links of downloadable apps
 Nord colors need to be set
-Spaceship theme for zsh is not being installed
-Mas for installing appstore applications have a lot of errors because of old commands
+Mas for installing appstore applications have a lot of errors because of old commands and doesn't install any apps
 Settings for iTerm are not being reused
 Fira Code is not being downloaded
-
+SSH config is not a part of the setup
