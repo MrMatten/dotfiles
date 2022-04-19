@@ -16,7 +16,7 @@ if ! mas account > /dev/null; then
 fi
 
 apps=(
-  1333542190 # 1 Password
+  /* 1333542190 # 1 Password */
   497799835 # Xcode
   441258766 # Magnet
   1452453066 # Hidden Bar

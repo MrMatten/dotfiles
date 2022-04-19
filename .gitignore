@@ -1,3 +1,4 @@
 vim/bundle/*
+vim/plugged/*
 vim/setup/plugin/*
 zsh/oh-my-zsh/*

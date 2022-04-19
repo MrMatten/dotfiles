@@ -1,8 +1,11 @@
+#!/bin/bash
+
 function install_applications {
     ./InstallSteps/Brewfile
     ./InstallSteps/Caskfile
     ./InstallSteps/AppStore
     ./InstallSteps/NPM
+    ./InstallSteps/Shell
 }
 
 install_applications
