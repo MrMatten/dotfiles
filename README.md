@@ -21,7 +21,7 @@ Need to manually make .config/nvim
 First run of FullSetup doesn't move past linking config files
     Second run says `brew command doesn't exists` brew need a restart of the terminal
     Also says mas command not found 
-    Also says nvm and npn not found
+    Also says nvm and npn not found - replace with volta
 iTerm doesn't show up in the links of downloadable apps
 Nord colors need to be set
 Mas for installing appstore applications have a lot of errors because of old commands and doesn't install any apps

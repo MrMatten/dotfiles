@@ -1,8 +1,8 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/mathiasegekvist/.oh-my-zsh"
+export ZSH=$HOME/.oh-my-zsh
 
 # Theme name see inspiration https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="spaceship"
@@ -16,42 +16,30 @@ SPACESHIP_BATTERY_SHOW=false
 plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
+source "$HOME/.oh-my-zsh/custom/themes/spaceship.zsh-theme"
 
-# User configuration
+### TOOLS ###
+# Volta
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
 
-# You may need to manually set your language environment
-export LANG=da_DK.UTF-8
-
-# Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='nvim'
-fi
+# iTerm
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 # SSH Agent
 export SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
-
-# For a full list of active aliases, run `alias`.
-alias icloud="cd ~/Library/Mobile\ Documents/com\~apple\~CloudDocs"
-alias savemyday="cd ~/Library/Mobile\ Documents/com\~apple\~CloudDocs/SaveMyDay"
-alias "to-urge-docs"="cd ~/Google\ Docs/Urge/"
-alias "to-urge-ios"="cd ~/go/src/Urge/ios"
-alias "to-urge-code"="cd ~/go/src/Urge/web-mono"
-alias "vim-keys"="cat ~/dotfiles/vim/vimrc"
-alias shortcuts="cd ~/dotfiles/shortcuts"
-alias "jetbrains-shortcuts"="shortcuts && cat JetbrainsCheatSheat.md"
-
-alias "to-xcode-templates"="cd /Users/mathiasegekvist/Library/Developer/Xcode/Templates/"
-
-alias safdef="defaultbrowser safari"
-alias firdef="defaultbrowser firefox"
-
-alias sshdevurge="ssh -i ~/.ssh/backup root@178.128.194.99"
-alias sshurge="ssh -i ~/.ssh/backup root@167.71.42.4"
 
 # Tmux
 alias tat="tmux attach -t"
 alias tnn="tmux new -s"
 
+# Git
+fd() {
+  preview="git diff $@ --color=always -- {-1}"
+  git diff $@ --name-only | fzf -m --ansi --preview $preview
+}
+
+### LANGUAGES ###
 # Go
 export GO111MODULE=auto
 export GOPATH=$HOME/go
@@ -69,12 +57,26 @@ export PATH="/usr/local/opt/ruby/bin:$PATH"
 export LDFLAGS="-L/usr/local/opt/ruby/lib"
 export CPPFLAGS="-I/usr/local/opt/ruby/include"
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+### SETTINGS ###
+# You may need to manually set your language environment
+export LANG=da_DK.UTF-8
 
+# Preferred editor for local and remote sessions
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='nvim'
+fi
 
-export PATH="/usr/local/sbin:$PATH"
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+# Custome aliases
+alias icloud="cd ~/Library/Mobile\ Documents/com\~apple\~CloudDocs"
+alias savemyday="cd ~/Library/Mobile\ Documents/com\~apple\~CloudDocs/SaveMyDay"
+alias "to-urge-docs"="cd ~/Google\ Docs/Urge/"
+alias "to-urge-ios"="cd ~/go/src/urge/ios"
+alias "to-urge-code"="cd ~/go/src/urge/web-mono"
+alias "vim-keys"="cat ~/dotfiles/vim/vimrc"
+alias shortcuts="cd ~/dotfiles/shortcuts"
+alias "jetbrains-shortcuts"="shortcuts && cat JetbrainsCheatSheat.md"
 
-source "/Users/mathiasegekvist/.oh-my-zsh/custom/themes/spaceship.zsh-theme"
+alias "to-xcode-templates"="cd ~/Library/Developer/Xcode/Templates/"
+
+alias safdef="defaultbrowser safari"
+alias firdef="defaultbrowser firefox"
