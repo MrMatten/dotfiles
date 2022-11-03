@@ -6,3 +6,4 @@ doc
 coverage
 .git
 bower_components
+node_modules
