@@ -28,3 +28,4 @@ Mas for installing appstore applications have a lot of errors because of old com
 Settings for iTerm are not being reused
 Fira Code is not being downloaded
 SSH config is not a part of the setup
+Get FiraCode Nerd for icons in nvim-tree

@@ -18,21 +18,22 @@ if has('nvim')
     " LSP config
     Plug 'neovim/nvim-lspconfig'
     Plug 'williamboman/nvim-lsp-installer'
-    Plug 'hrsh7th/cmp-nvim-lsp'
-    Plug 'hrsh7th/cmp-buffer'
-    Plug 'hrsh7th/cmp-path'
-    Plug 'hrsh7th/cmp-cmdline'
-    Plug 'hrsh7th/nvim-cmp'
+    Plug 'folke/trouble.nvim'
+    Plug 'kyazdani42/nvim-web-devicons'
+    Plug 'creativenull/diagnosticls-configs-nvim'
 
     " Snippet completion
-    Plug 'hrsh7th/cmp-vsnip'
-    Plug 'hrsh7th/vim-vsnip'
+    Plug 'hrsh7th/nvim-cmp'
+    Plug 'hrsh7th/cmp-buffer'
+    Plug 'hrsh7th/cmp-path'
+    Plug 'hrsh7th/cmp-nvim-lsp'
+    Plug 'hrsh7th/cmp-cmdline'
+    Plug 'L3MON4D3/LuaSnip'
+    Plug 'saadparwaiz1/cmp_luasnip'
+    Plug 'David-Kunz/cmp-npm'
 
     " Dashboard
     Plug 'glepnir/dashboard-nvim'
-
-    " File tree
-    Plug 'luukvbaal/nnn.nvim'
 
     " Git
     Plug 'nvim-lua/plenary.nvim'
@@ -40,6 +41,30 @@ if has('nvim')
 
     " Highlight Colours
     Plug 'norcalli/nvim-colorizer.lua'
+
+    " File Management
+    Plug 'nvim-lua/popup.nvim'
+    Plug 'nvim-lua/plenary.nvim'
+    Plug 'nvim-telescope/telescope.nvim'
+    Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+    Plug 'sharkdp/fd'
+    Plug 'BurntSushi/ripgrep'
+    Plug 'kelly-lin/telescope-ag'
+    Plug 'nvim-telescope/telescope-file-browser.nvim'
+    Plug 'sudormrfbin/cheatsheet.nvim'
+    Plug 'kyazdani42/nvim-tree.lua'
+    Plug 'kyazdani42/nvim-web-devicons' " for file icons
+    Plug 'ThePrimeagen/harpoon'
+
+    " https://github.com/nvim-treesitter/nvim-treesitter/issues/1111
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+    Plug 'JoosepAlviste/nvim-ts-context-commentstring'
+    Plug 'MaxMEllon/vim-jsx-pretty' " fix indentation in jsx until treesitter can
+    Plug 'jxnblk/vim-mdx-js'
+    Plug 'tpope/vim-obsession'
+
+    " test
+    Plug 'vim-test/vim-test'
 endif
 " Colours
 Plug 'kristijanhusak/vim-hybrid-material'
@@ -47,10 +72,6 @@ Plug 'chriskempson/base16-vim'
 
 " Status line
 Plug 'itchyny/lightline.vim'
-
-" Search for file
-Plug 'junegunn/fzf'
-Plug 'junegunn/fzf.vim'
 
 " Languages
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
@@ -62,15 +83,15 @@ Plug 'tpope/vim-fugitive'
 call plug#end()
 
 " Dashboard settings
-let g:dashboard_default_executive ='fzf'
-nmap <Leader>sa :<C-u>SessionSave<CR>
-nmap <Leader>sl :<C-u>SessionLoad<CR>
-nnoremap <silent> <Leader>fh :DashboardFindHistory<CR>
-nnoremap <silent> <Leader>ff :DashboardFindFile<CR>
-nnoremap <silent> <Leader>tc :DashboardChangeColorscheme<CR>
-nnoremap <silent> <Leader>fa :DashboardFindWord<CR>
-nnoremap <silent> <Leader>fb :DashboardJumpMark<CR>
-nnoremap <silent> <Leader>cn :DashboardNewFile<CR>
+let g:dashboard_default_executive ='telescope'
+nmap <leader>sa :<C-u>SessionSave<CR>
+nmap <leader>sl :<C-u>SessionLoad<CR>
+nnoremap <silent> <leader>fh :DashboardFindHistory<CR>
+nnoremap <silent> <leader>tc :DashboardChangeColorscheme<CR>
+nnoremap <silent> <leader>fb :DashboardJumpMark<CR>
+nnoremap <silent> <leader>nf :DashboardNewFile<CR>
+" nnoremap <silent> <Leader>fa :DashboardFindWord<CR>
+" nnoremap <silent> <Leader>ff :DashboardFindFile<CR>
 
 " LSP config
 "" Setup autocomplete lsp 
@@ -79,6 +100,7 @@ set completeopt=menu,menuone,noselect,noinsert
 lua << EOF
 -- Setup nvim-cmp.
 local cmp = require'cmp'
+local luasnip = require("luasnip")
 
 local has_words_before = function()
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -90,111 +112,225 @@ local feedkey = function(key, mode)
 end
 
 cmp.setup({
+    autoselect = false,
     snippet = {
         -- REQUIRED - you must specify a snippet engine
         expand = function(args)
-        vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-    end,
+            require('luasnip').lsp_expand(args.body)
+        end,
     },
     mapping = {
-        ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
-        ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
-        ['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
-        ['<C-e>'] = cmp.mapping({
-            i = cmp.mapping.abort(),
-            c = cmp.mapping.close(),
+        ['<C-e>'] = cmp.mapping.close(),
+        ['<C-x>'] = cmp.mapping.complete(),
+        ['<C-space>'] = cmp.mapping.confirm({
+            behavior = cmp.ConfirmBehavior.Insert,        
+            select = true
         }),
-        ['<CR>'] = cmp.mapping.confirm({ select = true }),
         ["<Tab>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
                 cmp.select_next_item()
-            elseif vim.fn["vsnip#available"](1) == 1 then
-                feedkey("<Plug>(vsnip-expand-or-jump)", "")
+            elseif luasnip.expand_or_jumpable() then
+                luasnip.expand_or_jump()
             elseif has_words_before() then
                 cmp.complete()
             else
-                fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
+                fallback()
             end
         end, { "i", "s" }),
 
-        ["<S-Tab>"] = cmp.mapping(function()
+        ["<S-Tab>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
                 cmp.select_prev_item()
-            elseif vim.fn["vsnip#jumpable"](-1) == 1 then
-                feedkey("<Plug>(vsnip-jump-prev)", "")
+            elseif luasnip.jumpable(-1) then
+                luasnip.jump(-1)
+            else
+                fallback()
             end
         end, { "i", "s" }),
     },
-    sources = cmp.config.sources({
-    { name = 'nvim_lsp' },
-    { name = 'vsnip' }, -- For vsnip users.
-    }, {
-        { name = 'buffer' },
-    })
+    sources = {
+        { name = 'nvim_lsp' },
+        { name = 'path' },
+        { name = 'luasnip'},
+        { name = 'buffer', keywork_length = 5 },
+        { name = 'npm', keywork_length = 4 },
+    }
 })
 
-  -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
-  cmp.setup.cmdline('/', {
-      sources = {
-          { name = 'buffer' }
-          }
-      })
+require'lspconfig'.gopls.setup {}
+require'lspconfig'.pylsp.setup {}
 
-  -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-  cmp.setup.cmdline(':', {
-      sources = cmp.config.sources({
-      { name = 'path' }
-      }, {
-      { name = 'cmdline' }
-      })
-  })
-
-  -- Setup lspconfig.
-  local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-  require'lspconfig'.gopls.setup { capabilities = capabilities }
-  require'lspconfig'.pylsp.setup { 
-      capabilities = capabilities,
-  }
+local util = require "lspconfig/util"
+require'lspconfig'.tsserver.setup { 
+    on_attach = function(client)
+        client.resolved_capabilities.document_formatting = false
+    end,
+    root_dir = util.root_pattern(".git", "tsconfig.json", "jsconfig.json")
+}
 EOF
 
-" Setup for nnn
-lua require"nnn".setup()
-tnoremap <leader>n <cmd>NnnExplorer<CR>
-nnoremap <leader>n <cmd>NnnExplorer %:p:h<CR>
-tnoremap <leader>p <cmd>NnnPicker<CR>
-nnoremap <leader>p <cmd>NnnPicker<CR>
+" williamboman/nvim-lsp-installer {{{
+lua << EOF
+local lsp_installer = require("nvim-lsp-installer")
+lsp_installer.on_server_ready(function(server)
+    local opts = {
+      capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+    }
+    server:setup(opts)
+end)
+EOF
+" }}}
+
+lua << EOF
+-- npm install -g diagnostic-languageserver eslint_d prettier_d_slim prettier
+local function on_attach(client)
+  print('Attached to ' .. client.name)
+end
+local dlsconfig = require 'diagnosticls-configs'
+dlsconfig.init {
+  default_config = false,
+  format = true,
+  on_attach = on_attach,
+}
+local eslint = require 'diagnosticls-configs.linters.eslint'
+local prettier = require 'diagnosticls-configs.formatters.prettier'
+prettier.requiredFiles = {
+    '.prettierrc',
+    '.prettierrc.json',
+    '.prettierrc.toml',
+    '.prettierrc.json',
+    '.prettierrc.yml',
+    '.prettierrc.yaml',
+    '.prettierrc.json5',
+    '.prettierrc.js',
+    '.prettierrc.cjs',
+    'prettier.config.js',
+    'prettier.config.cjs',
+  }
+dlsconfig.setup {
+  ['javascript'] = {
+    linter = eslint,
+    formatter = { prettier }
+  },
+  ['javascriptreact'] = {
+    linter = { eslint },
+    formatter = { prettier }
+  },
+  ['css'] = {
+    formatter = prettier
+  },
+  ['html'] = {
+    formatter = prettier
+  },
+}
+EOF
+
+" vim-test/vim-test {{{
+let test#strategy = "neovim"
+let test#neovim#term_position = "vertical"
+let g:test#javascript#runner = 'jest'
+" https://github.com/vim-test/vim-test/issues/272
+let g:root_markers = ['package.json', '.git/']
+function! s:RunVimTest(cmd)
+    " I guess this part could be replaced by projectionist#project_root
+    for marker in g:root_markers
+        let marker_file = findfile(marker, expand('%:p:h') . ';')
+        if strlen(marker_file) > 0
+            let g:test#project_root = fnamemodify(marker_file, ":p:h")
+            break
+        endif
+        let marker_dir = finddir(marker, expand('%:p:h') . ';')
+        if strlen(marker_dir) > 0
+            let g:test#project_root = fnamemodify(marker_dir, ":p:h")
+            break
+        endif
+    endfor
+
+    execute a:cmd
+endfunction
+nnoremap <leader>tt :call <SID>RunVimTest('TestNearest')<cr>
+nnoremap <leader>tl :call <SID>RunVimTest('TestLast')<cr>
+nnoremap <leader>tf :call <SID>RunVimTest('TestFile')<cr>
+nnoremap <leader>ts :call <SID>RunVimTest('TestSuite')<cr>
+nnoremap <leader>tv :call <SID>RunVimTest('TestVisit')<cr>
+if has('nvim')
+  tmap <C-f> <C-\><C-n>
+endif
+"}}}
+
+
+" Setup telescope
+lua << EOF
+require'telescope'.setup {
+  defaults = {
+      file_ignore_patterns = { "yarn.lock", "node_modules/" }
+  },
+  pickers = {
+    buffers = {
+      show_all_buffers = true,
+      sort_lastused = true,
+      mappings = {
+        i = {
+          ["<M-d>"] = "delete_buffer",
+        }
+      }
+    }
+  }
+}
+require'telescope'.load_extension 'fzf'
+require'telescope'.load_extension 'ag'
+require"telescope".load_extension 'file_browser'
+EOF
+nnoremap <leader>ag :Ag <c-r>=expand("<cword>")<cr><Enter>
+nnoremap <leader>ff :lua require'telescope.builtin'.find_files{ hidden = true }<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <Leader>fc :lua require'telescope.builtin'.git_status{}<cr>
+nnoremap <Leader>cb :lua require'telescope.builtin'.git_branches{}<cr>
+nnoremap <leader>fr :lua require'telescope.builtin'.resume{}<CR>
+
+nnoremap <silent> gd    <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> gh    <cmd>lua vim.lsp.buf.hover()<CR>
+nnoremap <silent> gca   <cmd>:Telescope lsp_code_actions<CR>
+nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
+nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
+nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
+nnoremap <silent> gR    <cmd>lua vim.lsp.buf.rename()<CR>
+nnoremap <silent> gE    <cmd>lua vim.diagnostic.open_float()<CR>
+nnoremap <silent><leader>fo <cmd>lua vim.lsp.buf.formatting()<CR>
+" Setup trouble
+lua require'trouble'.setup()
+nnoremap <leader>xx <cmd>TroubleToggle<cr>
+nnoremap <leader>xw <cmd>TroubleToggle workspace_diagnostics<cr>
+nnoremap <leader>xd <cmd>TroubleToggle document_diagnostics<cr>
+nnoremap <leader>xq <cmd>TroubleToggle quickfix<cr>
+nnoremap <leader>xl <cmd>TroubleToggle loclist<cr>
+" nnoremap gR <cmd>TroubleToggle lsp_references<cr>
+
+" kyazdani42/nvim-tree.lua {{{
+lua << EOF
+require'nvim-tree'.setup {
+    actions = {
+        open_file = {
+            quit_on_open = true,
+        },
+    },
+}
+EOF
+
+nnoremap <C-n> :NvimTreeToggle<CR>
+nnoremap <leader>r :NvimTreeRefresh<CR>
+nnoremap <leader>n :NvimTreeFindFile<CR>
+"}}}
 
 " Color highlighter
 set termguicolors
 lua require'colorizer'.setup()
 
-" Open FZF results in Quickfix (Ctrl+A and then Ctrl+Q)
-let $FZF_DEFAULT_OPTS = '--bind ctrl-a:select-all'
-let $FZF_DEFAULT_COMMAND = 'ag -g ""'
-
 " Add homebrew fzf to the vim path:
 set rtp+=/usr/local/opt/fzf
 
-function! s:build_quickfix_list(lines)
-    call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
-    copen
-    cc
-endfunction
-
-let g:fzf_action = {
-            \ 'ctrl-q': function('s:build_quickfix_list'),
-            \ 'ctrl-t': 'tab split',
-            \ 'ctrl-x': 'split',
-            \ 'ctrl-v': 'vsplit' }
-
-" Mappings for IO operations
-noremap <leader>f :FZF<CR>
-
 " copy to clipboard
 noremap <leader>c "*y
-
-" Search current word
-noremap <leader>ag :Ag <c-r>=expand("<cword>")<cr><Enter>
 
 " Lightline
 let g:lightline = {
@@ -214,20 +350,6 @@ endfunction
 
 noremap <leader>ren :call RenameFile()<cr>
 nnoremap <leader>rm :call delete(expand('%')) \| bdelete!<CR>
-
-" Rename variable
-" For local replace
-nnoremap gr gd[{V%::s/<C-R>///gc<left><left><left>
-
-" For global replace
-nnoremap gR gD:%s/<C-R>///gc<left><left><left>
-
-" Tests
-nmap <silent> <leader>t :TestNearest<CR>
-nmap <silent> <leader>T :TestFile<CR>
-nmap <silent> <leader>a :TestSuite<CR>
-nmap <silent> <leader>l :TestLast<CR>
-nmap <silent> <leader>g :TestVisit<CR>
 
 " Clear search highlights
 noremap <silent><leader>/ :nohls<CR>
@@ -255,13 +377,17 @@ noremap <leader>å :GoImports <cr>
 let g:syntastic_python_python_exec = 'python3' 
 let g:python3_host_prog = '/opt/homebrew/bin/python3'
 
+" Reload vimrc
+nnoremap <leader>rld :source $MYVIMRC<CR> 
+
 set showcmd                                 " Display incomplete commands
 set showmode                                " Display the mode you're in
 set pastetoggle=<F2>
 set backspace=indent,eol,start              " Intuitive backspacing
 set hidden                                  " Handle multiple buffers better
-set wildmenu                                " Enhanced command line completion
+" set wildmenu                                " Enhanced command line completion
 set wildmode=list:longest                   " Complete files like a shell
+set wildignore+=*/node_modules/**
 set ignorecase                              " Case-insensitive searching
 set smartcase                               " But case-sensitive if expression contains a capital letter
 set number                                  " Show line numbers
@@ -283,13 +409,13 @@ set noswapfile                              " Don't make swapfiles
 set backupskip=/tmp/*,/private/tmp/*
 set undodir=~/.vim/undo
 set expandtab                               " Use spaces instead of tabs
-set tabstop=4                               " <Tab> == 4 spaces
-set shiftwidth=4
-set backspace=2
-set smarttab
+" set tabstop=4                               " <Tab> == 4 spaces
+" set shiftwidth=4
+" set backspace=2
+" set smarttab
 set laststatus=2                            " Always show the status line
 set autoindent                              " Indent at the same level as previous line
-set smartindent
+" set smartindent
 set shortmess=a                             " Avoid 'Hit ENTER to continue'
 
 colorscheme hybrid_material

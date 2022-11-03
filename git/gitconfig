@@ -1,9 +1,5 @@
-[url "git@github.com:UrgeToday/"]
-	insteadOf = https://github.com/UrgeToday/
-
 [github]
 	user = MrMatten
-    ; user = GoodtalksIT
 
 [color]
     diff = auto
@@ -120,32 +116,34 @@
   changed = green
   untracked = cyan
 
-
 [core]
 	excludesfile = /Users/mathiasegekvist/.gitignore_global
-	editor = vim
+	editor = nvim
+	ignorecase = false
 
 [push]
 	default = simple
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-[mergetool "sourcetree"]
-	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
+
 [commit]
 	template = /Users/mathiasegekvist/.stCommitMsg
-[url "git@gitlab.com:"]
-	insteadOf = https://gitlab.com/
-[gui]
-	recentrepo = /Users/mathiasegekvist/Projects/ios-webtv
+	gpgsign = true
+
 [init]
 	defaultBranch = main
+
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+
 [user]
-	name = MrMatten
-	email = MrMatten
+	name = Mathias Egekvist
+	email = meg@trackunit.com
+	signingkey = ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDSZERdEJDE0t7BxnVuwMz3IkLViHKI8DDsXCChL8iIY1ZAUh7dsxXqvhnJFPoWCui7lqUqWqeaWLnl42wVjhfWdYRggO/6vf0BU2USNR4H9uDCs7sXeW1C9uRDIlDK1ThGVVZjTC1ApaD8kJO4+Io0miixlZo8LkwhEWsrn5hM6Ks5aKKdknmtrHsrJCd0D2YfOB63ag4PjT0uuxaXhRBTGUtSAO9vh1G4v0LIKfWXbElJ6qu3hrmfNgWIvrEg5rft5bYELKEpLnB8ytpWdo3gfTRWYbZin2/UNK6h9RidzCPkQTEzPl6rT30qGaoH3jumDgCN8s5gFG5Cg4rd77eGupi0fP+ch8wlOA+Oi9VU83u8zyVSL0g5VaJQudi9JQI4cr82taiPWUNnXU/8WyxbNE+g3WC/2XmDaU5c/JZh8Hhd9Dywrl312LX+jwKa6OpCDjuDSGj03QOtq2CElQeMe6BvUeJmJIeHy2QyztSjF83MjVzFJMkMMc6sBwiKU4VxV+Lzl6XMyDkYgDTj4392CqR1nRMXX5IeBFQJRHsH5hjC1lQ0LEN5histAVIIhQDfPVTs9zmA/zBgMv2nPoHzpio6uubFaVYvgwK89ZXVvUWAZGTKhZYZIRgPO9ysD/zYfgryDwjzfFyaqRE12oREczOYcF2ggj8wsBXhB3wcpw==
+
+[gpg]
+	format = ssh
+
+[gpg "ssh"]
+	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign

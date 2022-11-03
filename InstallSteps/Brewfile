@@ -14,19 +14,23 @@ brew install coreutils  # Install GNU core utilities (those that come with OS X 
 brew install findutils  # Install GNU `find`, `locate`, `updatedb`, and `xargs`, g-prefixed
   
 binaries=(
-  dep
+  defaultbrowser
   docker-cloud
   fastlane
+  fd
   fzf
+  gcc
   go
   golang-migrate
   grep
+  make
   neovim
   nginx
   nnn
   nvm
   openssl
   rename
+  ripgrep
   the_silver_searcher
   selecta
   sqlc

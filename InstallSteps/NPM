@@ -1,20 +1,19 @@
 #!/bin/zsh
 
-command -v nvm >/dev/null 2>&1 || { 
-	echo >&2 "Installing NVM Now"; \
-	curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash \
-    export NVM_DIR="$HOME/.nvm" \
-    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-    nvm install node
+command -v volta >/dev/null 2>&1 || { 
+	echo >&2 "Installing Volta Now"; \
+    curl https://get.volta.sh | bash \
+    volta install node
 }
 
 packages=(
-    elm-oracle
-    elm-format
-    neovim
-    spaceship-zsh-theme
     apollo
-    @elm-tooling/elm-language-server
+    typescript-language-server
+    typescript
+    diagnostic-languageserver
+    eslint_d
+    prettier_d_slim
+    prettier
 )
 
 for i in "${packages[@]}"

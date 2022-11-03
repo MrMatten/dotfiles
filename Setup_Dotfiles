@@ -3,7 +3,6 @@ DOTFILES="dotfiles"
 function setup_dotfiles {
     test -d "$ROOT/.config" || mkdir -p "$ROOT/.config"
 
-    vim
     nvim
     oh_my_zsh
     settings
@@ -16,8 +15,7 @@ function vim {
 }
 
 function nvim {
-    mkdir ~/.config/nvim
-    symlink "$DOTFILES/nvim/init.vim" ".config/nvim/init.vim"
+    symlink "$DOTFILES/nvim/" ".config/nvim"
 }
 
 function oh_my_zsh {
