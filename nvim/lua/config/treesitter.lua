@@ -1,32 +1,31 @@
-  require("nvim-treesitter.configs").setup {
-    -- One of "all", "maintained" (parsers with maintainers), or a list of languages
-    ensure_installed = "all",
+local status, ts = pcall(require, "nvim-treesitter.configs")
+if (not status) then return end
 
-    -- Install languages synchronously (only applied to `ensure_installed`)
-    sync_install = false,
-
-    auto_install = true,
-
-    highlight = {
-      -- `false` will disable the whole extension
-      enable = true,
-    },
-
-    rainbow = {
-      enable = true,
-      extended_mode = true,
-      max_file_lines = nil,
-    },
-
-    incremental_selection = {
-      enable = true,
-      keymaps = {
-        init_selection = "gnn",
-        node_incremental = "grn",
-        scope_incremental = "grc",
-        node_decremental = "grm",
-      },
-    },
-
-    indent = { enable = true, disable = {} },
+ts.setup {
+  highlight = {
+    enable = true,
+    disable = {},
+  },
+  indent = {
+    enable = true,
+    disable = {},
+  },
+  ensure_installed = {
+    "tsx",
+    "toml",
+    "fish",
+    "php",
+    "json",
+    "yaml",
+    "swift",
+    "css",
+    "html",
+    "lua"
+  },
+  autotag = {
+    enable = true,
+  },
 }
+
+local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
+parser_config.tsx.filetype_to_parsername = { "javascript", "typescript.tsx" }

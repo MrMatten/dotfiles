@@ -8,7 +8,7 @@ wk.register({
 
   g = {
     name = "Code",
-    d = { "<cmd>lua vim.lsp.buf.definition()<CR>", "Get Definition"},
+    d = { "<cmd>lua vim.lsp.buf.definition()<CR>", "Get Definition" },
     D = { "<cmd>lua vim.diagnostic.open_float()<CR>", "Diagnostics" },
     h = { "<cmd>lua vim.lsp.buf.hover()<CR>", "Hover" },
     i = { "<cmd>lua vim.lsp.buf.implementation()<CR>", "Implementation" },
@@ -19,14 +19,15 @@ wk.register({
     name = "Find",
     f = { "<cmd>Telescope find_files<cr>", "File" },
     h = { "<cmd>Telescope oldfiles<cr>", "Recent Files" },
-    w = { "<cmd>Ag <c-r>=expand(\"<cword>\")<cr><Enter>", "Word under cursor" },
+    g = { "<cmd>lua require('telescope.builtin').live_grep()<cr>", "Live Grep" },
+    w = { "<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>", "Current Buffer" },
     t = { "<cmd>NvimTreeToggle<cr>", "Toggle Tree" },
-  }, 
+  },
 
   s = {
     name = "Split",
-    v = { "<cmd>vs %<cr>", "Vertical"},
-    h = { "<cmd>split %<cr>", "Horizontal"},
+    v = { "<cmd>vs %<cr>", "Vertical" },
+    h = { "<cmd>split %<cr>", "Horizontal" },
   },
 
   t = {
@@ -52,10 +53,9 @@ wk.register({
 }, { prefix = "<leader>" })
 
 wk.register({
-  ["<C-h>"] = {"<C-w>h", "Left tab"},
-  ["<C-j>"] = {"<C-w>j", "Down tab"},
-  ["<C-k>"] = {"<C-w>k", "Up tab"},
-  ["<C-l>"] = {"<C-w>l", "Right tab"},
-  ["<leader><Tab>"] = {"<C-w>w", "Next tab"},
+  ["<C-h>"] = { "<C-w>h", "Left tab" },
+  ["<C-j>"] = { "<C-w>j", "Down tab" },
+  ["<C-k>"] = { "<C-w>k", "Up tab" },
+  ["<C-l>"] = { "<C-w>l", "Right tab" },
+  ["<leader><Tab>"] = { "<C-w>w", "Next tab" },
 })
-

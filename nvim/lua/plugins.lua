@@ -9,10 +9,22 @@ require('packer').startup(function(use)
         use 'wbthomason/packer.nvim'
 
         -- LSP config
-        use 'neovim/nvim-lspconfig'
-        use 'williamboman/nvim-lsp-installer'
+        use {
+                "neovim/nvim-lspconfig",
+                config = function()
+                        require("config.lsp")
+                end,
+        }
+        use { "williamboman/mason.nvim", "williamboman/mason-lspconfig.nvim" }
         use 'folke/trouble.nvim'
         use 'creativenull/diagnosticls-configs-nvim'
+        use {
+                'nvim-treesitter/nvim-treesitter',
+                run = ':TSUpdate',
+                config = function()
+                        require('config.treesitter')
+                end
+        }
 
         -- Snippet completion
         use {
@@ -21,10 +33,11 @@ require('packer').startup(function(use)
                 opt = true,
                 config = function()
                         require("config.lsp")
+                        require("config.cmp")
                 end,
                 requires = {
                         'hrsh7th/cmp-buffer',
-                        'hrsh7th/cmp-path', 
+                        'hrsh7th/cmp-path',
                         'hrsh7th/cmp-nvim-lsp',
                         'hrsh7th/cmp-cmdline',
                         'L3MON4D3/LuaSnip',
@@ -38,12 +51,12 @@ require('packer').startup(function(use)
         use 'lewis6991/gitsigns.nvim'
 
         -- File Management
-        use { 
-                'nvim-telescope/telescope.nvim', 
+        use {
+                'nvim-telescope/telescope.nvim',
                 opt = true,
                 cmd = { "Telescope" },
                 module = { "telescope", "telescope.builtin" },
-                keys= { "<leader>f" },
+                keys = { "<leader>f" },
                 wants = {
                         "plenary.nvim",
                         "popup.nvim",
@@ -60,7 +73,7 @@ require('packer').startup(function(use)
                         require('config.telescope')
                 end
         }
-        use { 
+        use {
                 'kyazdani42/nvim-tree.lua',
                 opt = true,
                 wants = "nvim-web-devicons",
@@ -73,7 +86,6 @@ require('packer').startup(function(use)
 
         use 'ThePrimeagen/harpoon'
 
-        use 'MaxMEllon/vim-jsx-pretty' -- fix indentation in jsx until treesitter can
         use 'jxnblk/vim-mdx-js'
         use 'tpope/vim-obsession'
 
@@ -115,7 +127,7 @@ require('packer').startup(function(use)
                 end
         }
         -- Colours
-        use 'kristijanhusak/vim-hybrid-material'
+        use 'marko-cerovac/material.nvim'
         use 'chriskempson/base16-vim'
         use {
                 'norcalli/nvim-colorizer.lua',
