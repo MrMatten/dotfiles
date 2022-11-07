@@ -45,51 +45,24 @@ lspconfig.gopls.setup {
 
 lspconfig.tsserver.setup {
   on_attach = on_attach,
-  filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
-  cmd = { "typescript-language-server", "--stdio" },
   flags = flags
 }
+
+lspconfig.tailwindcss.setup {}
 
 lspconfig.sumneko_lua.setup {
   on_attach = on_attach,
+  settings = {
+    Lua = {
+      diagnostics = {
+        globals = { 'vim' },
+      },
+      workspace = {
+        library = vim.api.nvim_get_runtime_file("", true),
+        checkThirdParty = false
+      }
+    }
+  },
   flags = flags
 }
 
-local dlsconfig = require 'diagnosticls-configs'
-dlsconfig.init {
-  default_config = false,
-  format = true,
-  on_attach = on_attach,
-}
-
-local eslint = require 'diagnosticls-configs.linters.eslint'
-local prettier = require 'diagnosticls-configs.formatters.prettier'
-prettier.requiredFiles = {
-  '.prettierrc',
-  '.prettierrc.json',
-  '.prettierrc.toml',
-  '.prettierrc.json',
-  '.prettierrc.yml',
-  '.prettierrc.yaml',
-  '.prettierrc.json5',
-  '.prettierrc.js',
-  '.prettierrc.cjs',
-  'prettier.config.js',
-  'prettier.config.cjs',
-}
-dlsconfig.setup {
-  ['javascript'] = {
-    linter = eslint,
-    formatter = { prettier }
-  },
-  ['javascriptreact'] = {
-    linter = { eslint },
-    formatter = { prettier }
-  },
-  ['css'] = {
-    formatter = prettier
-  },
-  ['html'] = {
-    formatter = prettier
-  },
-}

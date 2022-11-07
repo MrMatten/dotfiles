@@ -1,155 +1,168 @@
 vim.cmd([[
   augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerCompile
+  autocmd!
+  autocmd BufWritePost plugins.lua source <afile> | PackerSync
   augroup end
 ]])
 
 require('packer').startup(function(use)
-        use 'wbthomason/packer.nvim'
+    use 'wbthomason/packer.nvim'
 
-        -- LSP config
-        use {
-                "neovim/nvim-lspconfig",
-                config = function()
-                        require("config.lsp")
-                end,
-        }
-        use { "williamboman/mason.nvim", "williamboman/mason-lspconfig.nvim" }
-        use 'folke/trouble.nvim'
-        use 'creativenull/diagnosticls-configs-nvim'
-        use {
-                'nvim-treesitter/nvim-treesitter',
-                run = ':TSUpdate',
-                config = function()
-                        require('config.treesitter')
-                end
-        }
+    -- LSP config
+    use {
+        "neovim/nvim-lspconfig",
+        config = function()
+            require("config.lsp")
+        end,
+    }
+    use { "williamboman/mason.nvim", "williamboman/mason-lspconfig.nvim" }
+    use 'folke/trouble.nvim'
+    use {
+        'jose-elias-alvarez/null-ls.nvim',
+        config = function()
+            require('config.null-ls')
+        end,
+        requires = { "nvim-lua/plenary.nvim" },
+    }
 
-        -- Snippet completion
-        use {
-                'hrsh7th/nvim-cmp',
-                event = "InsertEnter",
-                opt = true,
-                config = function()
-                        require("config.lsp")
-                        require("config.cmp")
-                end,
-                requires = {
-                        'hrsh7th/cmp-buffer',
-                        'hrsh7th/cmp-path',
-                        'hrsh7th/cmp-nvim-lsp',
-                        'hrsh7th/cmp-cmdline',
-                        'L3MON4D3/LuaSnip',
-                        'saadparwaiz1/cmp_luasnip',
-                        'David-Kunz/cmp-npm'
-                },
-                wants = { "LuaSnip" }
-        }
+    -- Languages
+    use { 'fatih/vim-go', run = ':GoUpdateBinaries' }
+    use {
+        'MunifTanjim/prettier.nvim',
+        config = function()
+            require('config.prettier')
+        end
+    }
 
-        -- Git
-        use 'lewis6991/gitsigns.nvim'
+    -- Snippet completion
+    use {
+        'hrsh7th/nvim-cmp',
+        event = "InsertEnter",
+        opt = true,
+        config = function()
+            require("config.cmp")
+        end,
+        requires = {
+            'hrsh7th/cmp-buffer',
+            'hrsh7th/cmp-path',
+            'hrsh7th/cmp-nvim-lsp',
+            'hrsh7th/cmp-cmdline',
+            'L3MON4D3/LuaSnip',
+            'saadparwaiz1/cmp_luasnip',
+            'David-Kunz/cmp-npm'
+        },
+        wants = { "LuaSnip" }
+    }
 
-        -- File Management
-        use {
-                'nvim-telescope/telescope.nvim',
-                opt = true,
-                cmd = { "Telescope" },
-                module = { "telescope", "telescope.builtin" },
-                keys = { "<leader>f" },
-                wants = {
-                        "plenary.nvim",
-                        "popup.nvim",
-                        "telescope-fzf-native.nvim",
-                        "telescope-file-browser.nvim"
-                },
-                requires = {
-                        'nvim-lua/plenary.nvim',
-                        'nvim-lua/popup.nvim',
-                        "nvim-telescope/telescope-file-browser.nvim",
-                        { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
-                },
-                config = function()
-                        require('config.telescope')
-                end
-        }
-        use {
-                'kyazdani42/nvim-tree.lua',
-                opt = true,
-                wants = "nvim-web-devicons",
-                cmd = { "NvimTreeToggle", "NvimTreeClose" },
-                module = "nvim-tree",
-                config = function()
-                        require('config.nvimtree')
-                end
-        }
+    -- Git
+    use 'lewis6991/gitsigns.nvim'
 
-        use 'ThePrimeagen/harpoon'
+    -- File Management
+    use {
+        'nvim-telescope/telescope.nvim',
+        opt = true,
+        cmd = { "Telescope" },
+        module = { "telescope", "telescope.builtin" },
+        keys = { "<leader>f" },
+        wants = {
+            "plenary.nvim",
+            "popup.nvim",
+            "telescope-fzf-native.nvim",
+            "telescope-file-browser.nvim"
+        },
+        requires = {
+            'nvim-lua/plenary.nvim',
+            'nvim-lua/popup.nvim',
+            "nvim-telescope/telescope-file-browser.nvim",
+            { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+        },
+        config = function()
+            require('config.telescope')
+        end
+    }
+    use {
+        'kyazdani42/nvim-tree.lua',
+        opt = true,
+        wants = "nvim-web-devicons",
+        cmd = { "NvimTreeToggle", "NvimTreeClose" },
+        module = "nvim-tree",
+        config = function()
+            require('config.nvimtree')
+        end
+    }
 
-        use 'jxnblk/vim-mdx-js'
-        use 'tpope/vim-obsession'
+    use 'ThePrimeagen/harpoon'
 
-        -- test
-        use {
-                "nvim-neotest/neotest",
-                opt = true,
-                wants = {
-                        "plenary.nvim",
-                        "nvim-treesitter",
-                        "FixCursorHold.nvim",
-                        "neotest-python",
-                        "neotest-plenary",
-                        "neotest-go",
-                        "neotest-jest",
-                        "neotest-vim-test",
-                },
-                requires = {
-                        "nvim-lua/plenary.nvim",
-                        "nvim-treesitter/nvim-treesitter",
-                        "antoinemadec/FixCursorHold.nvim",
-                        "nvim-neotest/neotest-python",
-                        "nvim-neotest/neotest-plenary",
-                        "nvim-neotest/neotest-go",
-                        "haydenmeade/neotest-jest",
-                        "nvim-neotest/neotest-vim-test",
-                },
-                module = { "neotest" },
-                config = function()
-                        require("config.test")
-                end,
-        }
+    -- test
+    use {
+        "nvim-neotest/neotest",
+        opt = true,
+        wants = {
+            "plenary.nvim",
+            "nvim-treesitter",
+            "FixCursorHold.nvim",
+            "neotest-python",
+            "neotest-plenary",
+            "neotest-go",
+            "neotest-jest",
+            "neotest-vim-test",
+        },
+        requires = {
+            "nvim-lua/plenary.nvim",
+            "antoinemadec/FixCursorHold.nvim",
+            "nvim-neotest/neotest-python",
+            "nvim-neotest/neotest-plenary",
+            "nvim-neotest/neotest-go",
+            "haydenmeade/neotest-jest",
+            "nvim-neotest/neotest-vim-test",
+        },
+        module = { "neotest" },
+        config = function()
+            require("config.test")
+        end,
+    }
 
-        -- Keybindings
-        use {
-                "folke/which-key.nvim",
-                config = function()
-                        require("which-key").setup {}
-                end
-        }
-        -- Colours
-        use 'marko-cerovac/material.nvim'
-        use 'chriskempson/base16-vim'
-        use {
-                'norcalli/nvim-colorizer.lua',
-                config = function()
-                        require('config.colorizer')
-                end
-        }
+    -- Keybindings
+    use {
+        "folke/which-key.nvim",
+        config = function()
+            require("user.whichkey")
+        end
+    }
 
-        -- Status line
-        use {
-                'nvim-lualine/lualine.nvim',
-                requires = { 'kyazdani42/nvim-web-devicons', opt = true },
-                config = function()
-                        require('config.lualine')
-                end
-        }
+    -- Colours
+    use {
+        'norcalli/nvim-colorizer.lua',
+        config = function()
+            require('colorizer').setup()
+        end
+    }
+    use {
+        'mhartington/oceanic-next',
+        config = function()
+            vim.opt.termguicolors = true
+            vim.cmd.colorscheme [[OceanicNext]]
+        end
+    }
+    use {
+        'nvim-treesitter/nvim-treesitter',
+        run = ':TSUpdate',
+        config = function()
+            require('config.treesitter')
+        end
+    }
 
-        -- Languages
-        use { 'fatih/vim-go', run = ':GoUpdateBinaries' }
-        use 'sheerun/vim-polyglot'
+    -- Status line
+    use {
+        'nvim-lualine/lualine.nvim',
+        requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+        config = function()
+            require('config.lualine')
+        end
+    }
 
-        -- Extra functionality
-        use 'tpope/vim-commentary'
-        use 'tpope/vim-fugitive'
+    -- Extra functionality
+    use 'tpope/vim-commentary'
+    use 'tpope/vim-fugitive'
+    use 'tpope/vim-obsession'
 end)

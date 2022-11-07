@@ -17,12 +17,14 @@ binaries=(
   defaultbrowser
   docker-cloud
   fastlane
+  fsouza/prettierd/prettierd
   fd
   fzf
   gcc
   go
   golang-migrate
   grep
+  lua-language-server
   make
   neovim
   nginx
@@ -31,9 +33,9 @@ binaries=(
   openssl
   rename
   ripgrep
-  the_silver_searcher
   selecta
   sqlc
+  the_silver_searcher
   tree
   vim
   wget

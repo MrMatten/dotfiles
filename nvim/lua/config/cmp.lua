@@ -10,10 +10,6 @@ local has_words_before = function()
   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 
-local feedkey = function(key, mode)
-  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
-end
-
 cmp.setup({
     autoselect = false,
     snippet = {
@@ -25,7 +21,7 @@ cmp.setup({
         ['<C-e>'] = cmp.mapping.close(),
         ['<C-x>'] = cmp.mapping.complete(),
         ['<C-space>'] = cmp.mapping.confirm({
-            behavior = cmp.ConfirmBehavior.Insert,        
+            behavior = cmp.ConfirmBehavior.Insert,
             select = true
         }),
         ["<Tab>"] = cmp.mapping(function(fallback)
