@@ -140,17 +140,19 @@ require('packer').startup(function(use)
     use {
         'mhartington/oceanic-next',
         config = function()
-            vim.opt.termguicolors = true
             vim.cmd.colorscheme [[OceanicNext]]
         end
     }
     use {
-        'nvim-treesitter/nvim-treesitter',
-        run = ':TSUpdate',
-        config = function()
-            require('config.treesitter')
-        end
+        'sheerun/vim-polyglot'
     }
+    -- use {
+    --     'nvim-treesitter/nvim-treesitter',
+    --     run = ':TSUpdate',
+    --     config = function()
+    --         require('config.treesitter')
+    --     end
+    -- }
 
     -- Status line
     use {
