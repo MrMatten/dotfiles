@@ -1,6 +1,6 @@
 require("mason").setup()
 require("mason-lspconfig").setup({
-    ensure_installed = {"gopls", "tsserver", "tailwindcss", "sumneko_lua"}
+    ensure_installed = { "gopls", "tsserver", "tailwindcss", "sumneko_lua" }
 })
 
 local lspconfig = require 'lspconfig'
