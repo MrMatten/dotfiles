@@ -6,10 +6,6 @@ ts.setup {
     highlight = {
         enable = true
     },
-    indent = {
-        enable = true,
-        disable = {}
-    },
     auto_install = true,
 }
 

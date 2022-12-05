@@ -1,12 +1,51 @@
 vim.cmd([[
-  augroup packer_user_config
-  autocmd!
-  autocmd BufWritePost plugins.lua source <afile> | PackerSync
-  augroup end
+augroup packer_user_config
+autocmd!
+autocmd BufWritePost plugins.lua source <afile> | PackerSync
+augroup end
 ]])
 
 require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
+
+    -- Colours
+    use {
+        'nvim-treesitter/nvim-treesitter',
+        run = ':TSUpdate',
+        config = function()
+            require('config.treesitter')
+        end
+    }
+
+    use {
+        'norcalli/nvim-colorizer.lua',
+        config = function()
+            require('colorizer').setup()
+        end
+    }
+
+    use {
+        'marko-cerovac/material.nvim',
+        config = function()
+            vim.g.material_style = "oceanic"
+            require('material').setup({
+                plugins = {
+                    "gitsigns",
+                    "nvim-cmp",
+                    "nvim-tree",
+                    "nvim-web-devicons",
+                    "telescope",
+                    "trouble",
+                    "which-key",
+                }
+            })
+            vim.cmd.colorscheme [[material]]
+        end
+    }
+
+    use {
+        'kyazdani42/nvim-web-devicons', opt = true
+    }
 
     -- LSP config
     use {
@@ -22,11 +61,10 @@ require('packer').startup(function(use)
         config = function()
             require('config.null-ls')
         end,
-        requires = { "nvim-lua/plenary.nvim" },
     }
+    use { "nvim-lua/plenary.nvim" }
 
     -- Languages
-    use { 'fatih/vim-go', run = ':GoUpdateBinaries' }
     use {
         'MunifTanjim/prettier.nvim',
         config = function()
@@ -99,7 +137,6 @@ require('packer').startup(function(use)
         opt = true,
         wants = {
             "plenary.nvim",
-            "nvim-treesitter",
             "FixCursorHold.nvim",
             "neotest-python",
             "neotest-plenary",
@@ -130,34 +167,10 @@ require('packer').startup(function(use)
         end
     }
 
-    -- Colours
-    use {
-        'norcalli/nvim-colorizer.lua',
-        config = function()
-            require('colorizer').setup()
-        end
-    }
-    use {
-        'mhartington/oceanic-next',
-        config = function()
-            vim.cmd.colorscheme [[OceanicNext]]
-        end
-    }
-    use {
-        'sheerun/vim-polyglot'
-    }
-    -- use {
-    --     'nvim-treesitter/nvim-treesitter',
-    --     run = ':TSUpdate',
-    --     config = function()
-    --         require('config.treesitter')
-    --     end
-    -- }
 
     -- Status line
     use {
         'nvim-lualine/lualine.nvim',
-        requires = { 'kyazdani42/nvim-web-devicons', opt = true },
         config = function()
             require('config.lualine')
         end
