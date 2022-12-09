@@ -48,28 +48,23 @@ require('packer').startup(function(use)
     }
 
     -- LSP config
-    use {
-        "neovim/nvim-lspconfig",
-        config = function()
-            require("config.lsp")
-        end,
-    }
     use { "williamboman/mason.nvim", "williamboman/mason-lspconfig.nvim" }
-    use 'folke/trouble.nvim'
     use {
         'jose-elias-alvarez/null-ls.nvim',
-        config = function()
-            require('config.null-ls')
-        end,
     }
-    use { "nvim-lua/plenary.nvim" }
 
-    -- Languages
     use {
         'MunifTanjim/prettier.nvim',
         config = function()
             require('config.prettier')
         end
+    }
+
+    use {
+        "neovim/nvim-lspconfig",
+        config = function()
+            require("config.lsp")
+        end,
     }
 
     -- Snippet completion
@@ -180,4 +175,6 @@ require('packer').startup(function(use)
     use 'tpope/vim-commentary'
     use 'tpope/vim-fugitive'
     use 'tpope/vim-obsession'
+    use 'folke/trouble.nvim'
+    use { "nvim-lua/plenary.nvim" }
 end)

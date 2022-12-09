@@ -580,7 +580,7 @@ schemes:
 # *SolarizedDark
 # *TomorrowNight
 
-# colors: *Dracula
+colors: *Nord
 
 #######################################
 ##       END OF COLOR SCHEMES        ##

@@ -33,7 +33,7 @@ local keys_normal = {
         h = { "<cmd>Telescope oldfiles<cr>", "Recent Files" },
         g = { "<cmd>lua require('telescope.builtin').live_grep()<cr>", "Live Grep" },
         w = { "<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>", "Current Buffer" },
-        t = { "<cmd>NvimTreeToggle<cr>", "Toggle Tree" },
+        t = { "<cmd>NvimTreeFindFileToggle<cr>", "Toggle Tree" },
     },
 
     s = {

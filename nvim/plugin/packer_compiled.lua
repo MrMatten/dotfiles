@@ -184,7 +184,7 @@ _G.packer_plugins = {
     url = "https://github.com/marko-cerovac/material.nvim"
   },
   neotest = {
-    after = { "neotest-vim-test", "neotest-plenary", "neotest-jest", "FixCursorHold.nvim", "neotest-python", "neotest-go" },
+    after = { "FixCursorHold.nvim", "neotest-python", "neotest-plenary", "neotest-go", "neotest-jest", "neotest-vim-test" },
     config = { "\27LJ\2\n+\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\16config.test\frequire\0" },
     loaded = false,
     needs_bufread = false,
@@ -239,13 +239,12 @@ _G.packer_plugins = {
     url = "https://github.com/nvim-neotest/neotest-vim-test"
   },
   ["null-ls.nvim"] = {
-    config = { "\27LJ\2\n.\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\19config.null-ls\frequire\0" },
     loaded = true,
     path = "/Users/mathiasegekvist/.local/share/nvim/site/pack/packer/start/null-ls.nvim",
     url = "https://github.com/jose-elias-alvarez/null-ls.nvim"
   },
   ["nvim-cmp"] = {
-    after = { "cmp-nvim-lsp", "cmp-path", "cmp_luasnip", "LuaSnip", "cmp-npm", "cmp-buffer", "cmp-cmdline" },
+    after = { "cmp-buffer", "LuaSnip", "cmp-npm", "cmp-nvim-lsp", "cmp-path", "cmp_luasnip", "cmp-cmdline" },
     config = { "\27LJ\2\n*\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\15config.cmp\frequire\0" },
     loaded = false,
     needs_bufread = false,
@@ -403,14 +402,6 @@ if not vim.g.packer_custom_loader_enabled then
   vim.g.packer_custom_loader_enabled = true
 end
 
--- Config for: nvim-treesitter
-time([[Config for nvim-treesitter]], true)
-try_loadstring("\27LJ\2\n1\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\22config.treesitter\frequire\0", "config", "nvim-treesitter")
-time([[Config for nvim-treesitter]], false)
--- Config for: material.nvim
-time([[Config for material.nvim]], true)
-try_loadstring("\27LJ\2\nì\1\0\0\4\0\f\0\0186\0\0\0009\0\1\0'\1\3\0=\1\2\0006\0\4\0'\2\5\0B\0\2\0029\0\6\0005\2\b\0005\3\a\0=\3\t\2B\0\2\0016\0\0\0009\0\n\0009\0\v\0'\2\5\0B\0\2\1K\0\1\0\16colorscheme\bcmd\fplugins\1\0\0\1\b\0\0\rgitsigns\rnvim-cmp\14nvim-tree\22nvim-web-devicons\14telescope\ftrouble\14which-key\nsetup\rmaterial\frequire\foceanic\19material_style\6g\bvim\0", "config", "material.nvim")
-time([[Config for material.nvim]], false)
 -- Config for: nvim-colorizer.lua
 time([[Config for nvim-colorizer.lua]], true)
 try_loadstring("\27LJ\2\n7\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\14colorizer\frequire\0", "config", "nvim-colorizer.lua")
@@ -423,24 +414,46 @@ time([[Config for which-key.nvim]], false)
 time([[Config for prettier.nvim]], true)
 try_loadstring("\27LJ\2\n/\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\20config.prettier\frequire\0", "config", "prettier.nvim")
 time([[Config for prettier.nvim]], false)
--- Config for: null-ls.nvim
-time([[Config for null-ls.nvim]], true)
-try_loadstring("\27LJ\2\n.\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\19config.null-ls\frequire\0", "config", "null-ls.nvim")
-time([[Config for null-ls.nvim]], false)
 -- Config for: nvim-lspconfig
 time([[Config for nvim-lspconfig]], true)
 try_loadstring("\27LJ\2\n*\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\15config.lsp\frequire\0", "config", "nvim-lspconfig")
 time([[Config for nvim-lspconfig]], false)
+-- Config for: nvim-treesitter
+time([[Config for nvim-treesitter]], true)
+try_loadstring("\27LJ\2\n1\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\22config.treesitter\frequire\0", "config", "nvim-treesitter")
+time([[Config for nvim-treesitter]], false)
 -- Config for: lualine.nvim
 time([[Config for lualine.nvim]], true)
 try_loadstring("\27LJ\2\n.\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\19config.lualine\frequire\0", "config", "lualine.nvim")
 time([[Config for lualine.nvim]], false)
+-- Config for: material.nvim
+time([[Config for material.nvim]], true)
+try_loadstring("\27LJ\2\nì\1\0\0\4\0\f\0\0186\0\0\0009\0\1\0'\1\3\0=\1\2\0006\0\4\0'\2\5\0B\0\2\0029\0\6\0005\2\b\0005\3\a\0=\3\t\2B\0\2\0016\0\0\0009\0\n\0009\0\v\0'\2\5\0B\0\2\1K\0\1\0\16colorscheme\bcmd\fplugins\1\0\0\1\b\0\0\rgitsigns\rnvim-cmp\14nvim-tree\22nvim-web-devicons\14telescope\ftrouble\14which-key\nsetup\rmaterial\frequire\foceanic\19material_style\6g\bvim\0", "config", "material.nvim")
+time([[Config for material.nvim]], false)
 
 -- Command lazy-loads
 time([[Defining lazy-load commands]], true)
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file NvimTreeClose lua require("packer.load")({'nvim-tree.lua'}, { cmd = "NvimTreeClose", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file Telescope lua require("packer.load")({'telescope.nvim'}, { cmd = "Telescope", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file NvimTreeToggle lua require("packer.load")({'nvim-tree.lua'}, { cmd = "NvimTreeToggle", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
+pcall(vim.api.nvim_create_user_command, 'NvimTreeToggle', function(cmdargs)
+          require('packer.load')({'nvim-tree.lua'}, { cmd = 'NvimTreeToggle', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'nvim-tree.lua'}, { cmd = 'NvimTreeToggle' }, _G.packer_plugins)
+          return vim.fn.getcompletion('NvimTreeToggle ', 'cmdline')
+      end})
+pcall(vim.api.nvim_create_user_command, 'Telescope', function(cmdargs)
+          require('packer.load')({'telescope.nvim'}, { cmd = 'Telescope', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'telescope.nvim'}, { cmd = 'Telescope' }, _G.packer_plugins)
+          return vim.fn.getcompletion('Telescope ', 'cmdline')
+      end})
+pcall(vim.api.nvim_create_user_command, 'NvimTreeClose', function(cmdargs)
+          require('packer.load')({'nvim-tree.lua'}, { cmd = 'NvimTreeClose', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'nvim-tree.lua'}, { cmd = 'NvimTreeClose' }, _G.packer_plugins)
+          return vim.fn.getcompletion('NvimTreeClose ', 'cmdline')
+      end})
 time([[Defining lazy-load commands]], false)
 
 -- Keymap lazy-loads

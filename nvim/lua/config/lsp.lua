@@ -31,6 +31,7 @@ lspconfig.gopls.setup {
 
 lspconfig.tsserver.setup {
     on_attach = on_attach,
+    filetypes = { "javascript", "typescript", "typescriptreact", "typescript.tsx" },
     flags = flags
 }
 
@@ -51,3 +52,17 @@ lspconfig.sumneko_lua.setup {
     },
     flags = flags
 }
+
+local status, null_ls = pcall(require, "null-ls")
+if (not status) then return end
+
+null_ls.setup {
+    on_attach = on_attach,
+    sources = {
+        null_ls.builtins.formatting.prettierd
+    }
+}
+
+-- Open diagnostics in floating window
+vim.o.updatetime = 250
+vim.cmd [[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
