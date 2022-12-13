@@ -5,7 +5,7 @@ require("mason-lspconfig").setup({
 
 local lspconfig = require 'lspconfig'
 
-local function on_attach(client, bufnr)
+local function autoSaveOnAttach(client, bufnr)
     -- Use LSP as the handler for formatexpr.
     -- See `:help formatexpr` for more information.
     vim.api.nvim_buf_set_option(0, "formatexpr", "v:lua.vim.lsp.formatexpr()")
@@ -20,17 +20,20 @@ local function on_attach(client, bufnr)
     end
 end
 
+local function emptyOnAttach(client, bufnr)
+end
+
 local flags = {
     debounce_text_changes = 150,
 }
 
 lspconfig.gopls.setup {
-    on_attach = on_attach,
+    on_attach = autoSaveOnAttach,
     flags = flags
 }
 
 lspconfig.tsserver.setup {
-    on_attach = on_attach,
+    on_attach = emptyOnAttach,
     filetypes = { "javascript", "typescript", "typescriptreact", "typescript.tsx" },
     flags = flags
 }
@@ -38,7 +41,7 @@ lspconfig.tsserver.setup {
 lspconfig.tailwindcss.setup {}
 
 lspconfig.sumneko_lua.setup {
-    on_attach = on_attach,
+    on_attach = autoSaveOnAttach,
     settings = {
         Lua = {
             diagnostics = {
@@ -57,7 +60,7 @@ local status, null_ls = pcall(require, "null-ls")
 if (not status) then return end
 
 null_ls.setup {
-    on_attach = on_attach,
+    on_attach = autoSaveOnAttach,
     sources = {
         null_ls.builtins.formatting.prettierd
     }
