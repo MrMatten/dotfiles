@@ -71,19 +71,20 @@ require('packer').startup(function(use)
     use {
         'hrsh7th/nvim-cmp',
         event = "InsertEnter",
-        opt = true,
+        requires = {
+            { "hrsh7th/cmp-buffer", module = "cmp_buffer" },
+            { "hrsh7th/cmp-path", module = "cmp_path" },
+            { "hrsh7th/cmp-nvim-lsp", module = "cmp_nvim_lsp" },
+            { "hrsh7th/cmp-nvim-lua", module = "cmp_nvim_lua" },
+            { 'hrsh7th/cmp-cmdline', module = "cmp_cmdline" },
+            { 'L3MON4D3/LuaSnip' },
+            { 'David-Kunz/cmp-npm' },
+            { 'saadparwaiz1/cmp_luasnip', module = "cmp_luasnip" }
+        },
+
         config = function()
             require("config.cmp")
         end,
-        requires = {
-            'hrsh7th/cmp-buffer',
-            'hrsh7th/cmp-path',
-            'hrsh7th/cmp-nvim-lsp',
-            'hrsh7th/cmp-cmdline',
-            'L3MON4D3/LuaSnip',
-            'saadparwaiz1/cmp_luasnip',
-            'David-Kunz/cmp-npm'
-        },
         wants = { "LuaSnip" }
     }
 
@@ -96,7 +97,6 @@ require('packer').startup(function(use)
         opt = true,
         cmd = { "Telescope" },
         module = { "telescope", "telescope.builtin" },
-        keys = { "<leader>f" },
         wants = {
             "plenary.nvim",
             "popup.nvim",
@@ -169,6 +169,16 @@ require('packer').startup(function(use)
         config = function()
             require('config.lualine')
         end
+    }
+
+    -- Buffer line
+    use {
+        "akinsho/nvim-bufferline.lua",
+        event = "BufReadPre",
+        wants = "nvim-web-devicons",
+        config = function()
+            require("config.bufferline")
+        end,
     }
 
     -- Extra functionality

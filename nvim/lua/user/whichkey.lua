@@ -19,12 +19,17 @@ local keys_visual = {
 
 local keys_normal = {
     g = {
-        name = "Code",
+        name = "Code information",
         d = { "<cmd>lua vim.lsp.buf.definition()<CR>", "Get Definition" },
         D = { "<cmd>lua vim.diagnostic.open_float()<CR>", "Diagnostics" },
         h = { "<cmd>lua vim.lsp.buf.hover()<CR>", "Hover" },
         i = { "<cmd>lua vim.lsp.buf.implementation()<CR>", "Implementation" },
         r = { "<cmd>lua vim.lsp.buf.references()<CR>", "References" },
+    },
+
+    c = {
+        name = "Code manipulation",
+        r = { "<cmd>lua vim.lsp.buf.rename()<CR>", "Rename" }
     },
 
     f = {
@@ -43,7 +48,7 @@ local keys_normal = {
     },
 
     t = {
-        name = "Tab",
+        name = "Tabs",
         n = { "<cmd>tabnew <cr>", "New" },
         l = { "<cmd>tabprevious <cr>", "Left" },
         r = { "<cmd>tabNext <cr>", "Right" },
