@@ -1,3 +1,2 @@
-require('user.vimoptions')
-require('plugins')
-require('user.whichkey')
+-- bootstrap lazy.nvim, LazyVim and your plugins
+require("config.lazy")

@@ -75,14 +75,8 @@ fi
 # Custome aliases
 alias icloud="cd ~/Library/Mobile\ Documents/com\~apple\~CloudDocs"
 alias savemyday="cd ~/Library/Mobile\ Documents/com\~apple\~CloudDocs/SaveMyDay"
-alias "to-urge-docs"="cd ~/Google\ Docs/Urge/"
-alias "to-urge-ios"="cd ~/go/src/urge/ios"
-alias "to-urge-code"="cd ~/go/src/urge/web-mono"
-alias "vim-keys"="cat ~/dotfiles/vim/vimrc"
-alias shortcuts="cd ~/dotfiles/shortcuts"
-alias "jetbrains-shortcuts"="shortcuts && cat JetbrainsCheatSheat.md"
-
 alias "to-xcode-templates"="cd ~/Library/Developer/Xcode/Templates/"
 
-alias safdef="defaultbrowser safari"
-alias firdef="defaultbrowser firefox"
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
