@@ -1,0 +1,74 @@
+#!/bin/bash
+
+command -v brew >/dev/null 2>&1 || {
+  echo >&2 "Installing Homebrew Now"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+  echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' \
+    eval "$(/opt/homebrew/bin/brew shellenv)" >>/Users/mathiasegekvist/.zprofile
+}
+
+brew install coreutils # Install GNU core utilities (those that come with OS X are outdated)
+brew install findutils # Install GNU `find`, `locate`, `updatedb`, and `xargs`, g-prefixed
+
+binaries=(
+  bat
+  curl
+  defaultbrowser
+  fd
+  fsouza/prettierd/prettierd
+  fzf
+  gcc
+  go
+  golang-migrate
+  grep
+  lua
+  lua-language-server
+  luarocks
+  make
+  maven
+  mas # For installing from App Store
+  neovim
+  nginx
+  openssl
+  rename
+  ripgrep
+  selecta
+  sdkman-cli
+  sqlc
+  the_silver_searcher
+  thefuck
+  tmux
+  tpm
+  tree
+  vim
+  volta
+  wget
+  zsh
+)
+
+casks=(
+  anytype
+  alfred
+  firefox
+  wezterm
+  ngrok
+  1password
+  1password-cli
+  docker
+  logi-options-plus
+  proton-drive
+  proton-mail
+  proton-pass
+  protonvpn
+  jetbrains-toolbox
+)
+
+for i in "${binaries[@]}"; do
+  brew install "$i"
+done
+
+for i in "${casks[@]}"; do
+  brew install --cask "$i"
+done
+
+brew tap sdkman/tap

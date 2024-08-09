@@ -1,0 +1,39 @@
+#!/bin/bash
+
+set -e
+ROOT=${1:-~}
+
+function setupSettings {
+  SETTINGS="dotfiles/settings"
+
+  test -d "$ROOT/.config" || mkdir -p "$ROOT/.config"
+
+  symlink "$SETTINGS/agignore" ".agignore"
+  symlink "$SETTINGS/git/gitconfig" ".gitconfig"
+  symlink "$SETTINGS/git/gitignore_global" ".gitignore_global"
+  symlink "$SETTINGS/shell/zshrc" ".zshrc"
+  symlink "$SETTINGS/shell/profile" ".profile"
+  symlink "$SETTINGS/tmux.conf" ".tmux.conf"
+  symlink "$SETTINGS/wezterm-config.lua" ".config/wezterm/wezterm.lua"
+
+  # Oh-my-zsh
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+  # nvim
+  symlink "$SETTINGS/nvim/init.lua" ".config/nvim/init.lua"
+  symlink "$SETTINGS/nvim/lazy-lua-config.lua" ".config/nvim/lua/config/lazy.lua"
+}
+
+function symlink() {
+  TARGET=~/$2
+  echo $TARGET
+  if [[ -e $TARGET ]]; then
+    rm -rf $TARGET
+  fi
+  ln -nfs ~/$1 $TARGET
+}
+
+./apps/shell-tools
+./apps/brew
+./apps/app-store
+setupSettings

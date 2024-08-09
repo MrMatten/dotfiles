@@ -1,6 +1,3 @@
-[github]
-	user = MrMatten
-
 [color]
     diff = auto
     status = auto
@@ -140,10 +137,13 @@
 [user]
 	name = Mathias Egekvist
 	email = meg@trackunit.com
-	signingkey = ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDSZERdEJDE0t7BxnVuwMz3IkLViHKI8DDsXCChL8iIY1ZAUh7dsxXqvhnJFPoWCui7lqUqWqeaWLnl42wVjhfWdYRggO/6vf0BU2USNR4H9uDCs7sXeW1C9uRDIlDK1ThGVVZjTC1ApaD8kJO4+Io0miixlZo8LkwhEWsrn5hM6Ks5aKKdknmtrHsrJCd0D2YfOB63ag4PjT0uuxaXhRBTGUtSAO9vh1G4v0LIKfWXbElJ6qu3hrmfNgWIvrEg5rft5bYELKEpLnB8ytpWdo3gfTRWYbZin2/UNK6h9RidzCPkQTEzPl6rT30qGaoH3jumDgCN8s5gFG5Cg4rd77eGupi0fP+ch8wlOA+Oi9VU83u8zyVSL0g5VaJQudi9JQI4cr82taiPWUNnXU/8WyxbNE+g3WC/2XmDaU5c/JZh8Hhd9Dywrl312LX+jwKa6OpCDjuDSGj03QOtq2CElQeMe6BvUeJmJIeHy2QyztSjF83MjVzFJMkMMc6sBwiKU4VxV+Lzl6XMyDkYgDTj4392CqR1nRMXX5IeBFQJRHsH5hjC1lQ0LEN5histAVIIhQDfPVTs9zmA/zBgMv2nPoHzpio6uubFaVYvgwK89ZXVvUWAZGTKhZYZIRgPO9ysD/zYfgryDwjzfFyaqRE12oREczOYcF2ggj8wsBXhB3wcpw==
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOuWwSXqucZGSm3pS4CZOCVEiIdzbso5rrG3gLNy+YAP
 
 [gpg]
 	format = ssh
 
 [gpg "ssh"]
 	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+
+[commit]
+  gpgsign = true

@@ -1,9 +1,0 @@
-set -e
-ROOT=${1:-~}
-
-function main {
-    ./Setup_Dotfiles
-    ./Install_Applications
-}
-
-main
