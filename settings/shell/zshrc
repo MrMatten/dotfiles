@@ -21,7 +21,9 @@ fi
 
 # Custome aliases
 alias icloud="cd ~/Library/Mobile\ Documents/com\~apple\~CloudDocs"
+alias proton="cd ~/Users/mathiasegekvist/Library/CloudStorage/ProtonDrive-mathias@hvideg.dk"
 alias savemyday="cd ~/Code/save-my-day/"
+
 ### SETTINGS ###
 # You may need to manually set your language environment
 export LANG=da_DK.UTF-8
