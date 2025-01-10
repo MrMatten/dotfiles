@@ -14,7 +14,7 @@ function setupSettings {
   symlink "$SETTINGS/shell/zshrc" ".zshrc"
   symlink "$SETTINGS/shell/profile" ".profile"
   symlink "$SETTINGS/tmux.conf" ".tmux.conf"
-  symlink "$SETTINGS/wezterm-config.lua" ".config/wezterm/wezterm.lua"
+  symlink "$SETTINGS/ghostty/config" ".config/ghostty/config"
 
   # Oh-my-zsh
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
