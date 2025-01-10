@@ -49,9 +49,8 @@ binaries=(
 casks=(
   anytype
   alfred
-  firefox
-  wezterm
-  ngrok
+  arc
+  ghostty
   1password
   1password-cli
   docker
