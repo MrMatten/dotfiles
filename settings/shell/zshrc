@@ -1,9 +1,6 @@
 # If you come from basdh you might have to change your $PATH.
 export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH
 
-# Nexus setup
-source ~/.mavenrc
-
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="spaceship"
@@ -33,9 +30,6 @@ if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='nvim'
 fi
 
-# Custome aliases
-alias icloud="cd ~/Library/Mobile\ Documents/com\~apple\~CloudDocs"
-alias savemyday="cd ~/Code/save-my-day/"
 ### TOOLS ###
 # Volta
 export VOLTA_HOME="$HOME/.volta"
@@ -56,9 +50,6 @@ fd() {
 
 # Admin by request
 export HOMEBREW_CASK_OPTS="--appdir=~/Applications"
-
-# Wezterm
-export PATH="$PATH:/Applications/WezTerm.app/Contents/MacOS"
 
 # bun
 export BUN_INSTALL="$HOME/.bun"

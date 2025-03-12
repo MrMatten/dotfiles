@@ -16,7 +16,7 @@ mkdirIfNotPresent() {
 }
 
 function setupSettings {
-  SETTINGS="."
+  SETTINGS="dotfiles/settings"
 
   symlink "$SETTINGS/agignore" ".agignore"
   symlink "$SETTINGS/git/gitconfig" ".gitconfig"
