@@ -137,6 +137,7 @@
 [user]
 	name = MrMatten
 	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOuWwSXqucZGSm3pS4CZOCVEiIdzbso5rrG3gLNy+YAP
+	email = megekvist@me.com
 
 [gpg]
 	format = ssh
