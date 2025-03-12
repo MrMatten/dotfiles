@@ -11,6 +11,7 @@ brew install coreutils # Install GNU core utilities (those that come with OS X a
 brew install findutils # Install GNU `find`, `locate`, `updatedb`, and `xargs`, g-prefixed
 
 binaries=(
+  ast-grep
   bat
   curl
   defaultbrowser
@@ -21,6 +22,7 @@ binaries=(
   go
   golang-migrate
   grep
+  lazygit
   lua
   lua-language-server
   luarocks
