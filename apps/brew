@@ -47,9 +47,9 @@ binaries=(
 )
 
 casks=(
-  anytype
-  alfred
   arc
+  raycast
+  todoist
   ghostty
   1password
   1password-cli

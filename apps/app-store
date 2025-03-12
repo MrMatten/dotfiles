@@ -19,7 +19,6 @@ apps=(
   497799835 # Xcode
   441258766 # Magnet
   1452453066 # Hidden Bar
-  803453959 # Slack
 )
 
 for i in "${apps[@]}"
