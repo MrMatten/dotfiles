@@ -1,0 +1,48 @@
+mkdirIfNotPresent() {
+    local dirname="$1"
+
+    if [[ -z "$dirname" ]]; then
+        echo "Usage: mkdirIfNotPresent <path>"
+        return 1
+    fi
+
+    if [[ ! -d "$dirname" ]]; then
+        echo "Directory doesn't exist. Creating now..."
+        mkdir -p -- "$dirname"
+        echo "Directory created: $dirname"
+    else
+        echo "Directory already exists: $dirname"
+    fi
+}
+
+function setupSettings {
+  SETTINGS="."
+
+  symlink "$SETTINGS/agignore" ".agignore"
+  symlink "$SETTINGS/git/gitconfig" ".gitconfig"
+  symlink "$SETTINGS/git/gitignore_global" ".gitignore_global"
+  symlink "$SETTINGS/shell/zshrc" ".zshrc"
+  symlink "$SETTINGS/shell/profile" ".profile"
+  symlink "$SETTINGS/tmux.conf" ".tmux.conf"
+  mkdirIfNotPresent "$HOME/.config/ghostty"
+  symlink "$SETTINGS/ghostty/config" ".config/ghostty/config"
+
+  # Oh-my-zsh
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+  # nvim
+  mkdirIfNotPresent "$HOME/.config/nvim"
+  symlink "$SETTINGS/nvim/init.lua" ".config/nvim/init.lua"
+  symlink "$SETTINGS/nvim/lazy-lua-config.lua" ".config/nvim/lua/config/lazy.lua"
+}
+
+function symlink() {
+  TARGET=~/$2
+  echo $TARGET
+  if [[ -e $TARGET ]]; then
+    rm -rf $TARGET
+  fi
+  ln -nfs ~/$1 $TARGET
+}
+
+setupSettings
