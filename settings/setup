@@ -33,6 +33,7 @@ function setupSettings {
   # nvim
   mkdirIfNotPresent "$HOME/.config/nvim"
   symlink "$SETTINGS/nvim/init.lua" ".config/nvim/init.lua"
+  mkdirIfNotPresent "$HOME/.config/nvim/lua/config"
   symlink "$SETTINGS/nvim/lazy-lua-config.lua" ".config/nvim/lua/config/lazy.lua"
 }
 
