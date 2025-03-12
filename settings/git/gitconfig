@@ -135,8 +135,7 @@
 	required = true
 
 [user]
-	name = Mathias Egekvist
-	email = meg@trackunit.com
+	name = MrMatten
 	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOuWwSXqucZGSm3pS4CZOCVEiIdzbso5rrG3gLNy+YAP
 
 [gpg]
