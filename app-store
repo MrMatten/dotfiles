@@ -1,0 +1,27 @@
+if ! type "brew" > /dev/null; then
+  echo "Homebrew not installed. Mission aborted!"
+fi
+
+if ! type "mas" > /dev/null; then
+  brew install mas
+fi
+
+if ! mas account > /dev/null; then
+  echo "Can I have you Apple ID, please?"
+  read email
+  echo "Can I also have your app specific password?"
+  read password
+  echo -e $email $password 
+  mas signin $email "$password"
+fi
+
+apps=(
+  497799835 # Xcode
+  1452453066 # Hidden Bar
+)
+
+for i in "${apps[@]}"
+do
+  mas install $i
+done
+mas upgrade

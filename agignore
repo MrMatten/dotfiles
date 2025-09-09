@@ -1,0 +1,9 @@
+build
+log
+vendor
+tmp
+doc
+coverage
+.git
+bower_components
+node_modules
