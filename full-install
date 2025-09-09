@@ -1,7 +1,6 @@
 #!/bin/bash
 
 set -e
-ROOT=${1:-~}
 
 ./apps/shell-tools
 ./apps/brew
