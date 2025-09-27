@@ -18,7 +18,7 @@ function mkdirIfNotPresent() {
 }
 
 function setupSettings {
-  SETTINGS="dotfiles/settings"
+  SETTINGS="dotfiles/"
 
   symlink "$SETTINGS/agignore" ".agignore"
   symlink "$SETTINGS/git/gitconfig" ".gitconfig"
@@ -28,15 +28,6 @@ function setupSettings {
   symlink "$SETTINGS/tmux.conf" ".tmux.conf"
   mkdirIfNotPresent "$HOME/.config/ghostty"
   symlink "$SETTINGS/ghostty/config" ".config/ghostty/config"
-
-  # Oh-my-zsh
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-
-  # nvim
-  mkdirIfNotPresent "$HOME/.config/nvim"
-  symlink "$SETTINGS/nvim/init.lua" ".config/nvim/init.lua"
-  mkdirIfNotPresent "$HOME/.config/nvim/lua/config"
-  symlink "$SETTINGS/nvim/lazy-lua-config.lua" ".config/nvim/lua/config/lazy.lua"
 }
 
 function symlink() {
