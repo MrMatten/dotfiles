@@ -15,7 +15,7 @@ theme = Catppuccin Frappe
 # (periwinkle, keyword blue, cyan, green, red, yellow) - a warm sand scores
 # better against inline code but collides with the yellow used for functions.
 # Must come after `theme`, which also sets the foreground.
-foreground = #c6d0f5
+foreground = #d6def9
 
 # Claude Code quantises its colours to the 256-palette inside tmux, and specific
 # UI elements land on specific indices (measured on 2.1.236 - re-verify after an
@@ -30,7 +30,7 @@ palette = 183=#ca9ee6
 palette = 187=#e5c890
 palette = 217=#e78284
 
-bold-color = #e9edfb
+bold-color = #f4dfd4
 # <<< claude-terminal-style <<<
 # Per-machine overrides (font size, window geometry). The ? makes it optional,
 # so a machine without the file still loads. Not versioned. Last wins.
