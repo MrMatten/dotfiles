@@ -15,7 +15,7 @@ theme = TokyoNight Moon
 # (periwinkle, keyword blue, cyan, green, red, yellow) - a warm sand scores
 # better against inline code but collides with the yellow used for functions.
 # Must come after `theme`, which also sets the foreground.
-foreground = #c7b8b0
+foreground = #f2d5cf
 # <<< claude-terminal-style <<<
 # Per-machine overrides (font size, window geometry). The ? makes it optional,
 # so a machine without the file still loads. Not versioned. Last wins.
