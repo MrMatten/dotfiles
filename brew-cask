@@ -1,0 +1,20 @@
+#!/bin/bash
+
+set -e
+
+casks=(
+  ghostty
+  1password
+  1password-cli
+  docker
+  logi-options-plus
+  proton-drive
+  proton-mail
+  proton-pass
+  protonvpn
+  jetbrains-toolbox
+)
+
+for i in "${casks[@]}"; do
+  brew install --cask "$i"
+done
