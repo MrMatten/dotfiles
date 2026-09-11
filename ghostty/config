@@ -21,11 +21,13 @@ foreground = #c6d0f5
 # UI elements land on specific indices (measured on 2.1.236 - re-verify after an
 # upgrade with: tmux capture-pane -p -e | grep -o $'\x1b\[38;5;[0-9]*m' | sort | uniq -c).
 # Remapping those indices is the only way to colour these elements at all.
+palette = 37=#737994
+palette = 103=#838ba7
 palette = 105=#ef9f76
-palette = 145=#838ba7
 palette = 151=#a6d189
 palette = 152=#85c1dc
 palette = 183=#ca9ee6
+palette = 187=#e5c890
 palette = 217=#e78284
 
 bold-color = #e9edfb
