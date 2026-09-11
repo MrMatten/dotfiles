@@ -15,7 +15,17 @@ theme = TokyoNight Moon
 # (periwinkle, keyword blue, cyan, green, red, yellow) - a warm sand scores
 # better against inline code but collides with the yellow used for functions.
 # Must come after `theme`, which also sets the foreground.
-foreground = #f2d5cf
+foreground = #c6d0f5
+
+# Inline code resolves to `ansi:blueBright` on this theme base, i.e. palette slot
+# 12. The syntax highlighter only uses the NORMAL slots, so 12 is free to
+# repurpose. This is the only way to colour inline code at all.
+palette = 12=#ef9f76
+
+# With truecolor unavailable, Claude Code quantises to the 256-palette and inline
+# code lands on index 105 (measured - nothing else uses it). Setting both covers
+# either case.
+palette = 105=#ef9f76
 # <<< claude-terminal-style <<<
 # Per-machine overrides (font size, window geometry). The ? makes it optional,
 # so a machine without the file still loads. Not versioned. Last wins.
