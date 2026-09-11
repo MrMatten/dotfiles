@@ -4,7 +4,7 @@ window-save-state = always
 # Claude Code highlights fenced code blocks with plain ANSI colour NAMES, so the
 # terminal's 16-colour palette decides how code looks. This theme matches nvim
 # (LazyVim tokyonight style=moon), which uses truecolor and is unaffected by it.
-theme = TokyoNight Moon
+theme = Catppuccin Frappe
 
 # Claude Code emits NO colour for assistant prose, so it renders in the terminal
 # default foreground. Dimming that is the only way to make prose recede, and it
@@ -17,15 +17,18 @@ theme = TokyoNight Moon
 # Must come after `theme`, which also sets the foreground.
 foreground = #c6d0f5
 
-# Inline code resolves to `ansi:blueBright` on this theme base, i.e. palette slot
-# 12. The syntax highlighter only uses the NORMAL slots, so 12 is free to
-# repurpose. This is the only way to colour inline code at all.
-palette = 12=#ef9f76
-
-# With truecolor unavailable, Claude Code quantises to the 256-palette and inline
-# code lands on index 105 (measured - nothing else uses it). Setting both covers
-# either case.
+# Claude Code quantises its colours to the 256-palette inside tmux, and specific
+# UI elements land on specific indices (measured on 2.1.236 - re-verify after an
+# upgrade with: tmux capture-pane -p -e | grep -o $'\x1b\[38;5;[0-9]*m' | sort | uniq -c).
+# Remapping those indices is the only way to colour these elements at all.
 palette = 105=#ef9f76
+palette = 145=#838ba7
+palette = 151=#a6d189
+palette = 152=#85c1dc
+palette = 183=#ca9ee6
+palette = 217=#e78284
+
+bold-color = #e9edfb
 # <<< claude-terminal-style <<<
 # Per-machine overrides (font size, window geometry). The ? makes it optional,
 # so a machine without the file still loads. Not versioned. Last wins.
