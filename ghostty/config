@@ -1,12 +1,17 @@
 window-save-state = always
 
 # >>> claude-terminal-style >>>
-# Claude Code highlights code with plain ANSI colour names, so the terminal
-# palette decides how code looks. This theme matches nvim (LazyVim tokyonight
-# style=moon), which uses truecolor and is unaffected by the ANSI palette.
+# Claude Code highlights fenced code blocks with plain ANSI colour NAMES, so the
+# terminal's 16-colour palette decides how code looks. This theme matches nvim
+# (LazyVim tokyonight style=moon), which uses truecolor and is unaffected by it.
 theme = TokyoNight Moon
-# <<< claude-terminal-style <<<
 
+# Claude Code emits NO colour for assistant prose, so it renders in the terminal
+# default foreground. Dimming that is the only way to make prose recede, and it
+# is what separates prose from inline code (which is hardcoded to #b1b9f9 and
+# cannot be themed - see README). Must come after `theme`, which also sets fg.
+foreground = #8b93b8
+# <<< claude-terminal-style <<<
 # Per-machine overrides (font size, window geometry). The ? makes it optional,
 # so a machine without the file still loads. Not versioned. Last wins.
 config-file = ?~/.config/ghostty/local
