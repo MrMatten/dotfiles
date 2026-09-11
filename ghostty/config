@@ -1,4 +1,12 @@
-font-size = 18
-window-height = 180
-window-width = 130
 window-save-state = always
+
+# >>> claude-terminal-style >>>
+# Claude Code highlights code with plain ANSI colour names, so the terminal
+# palette decides how code looks. This theme matches nvim (LazyVim tokyonight
+# style=moon), which uses truecolor and is unaffected by the ANSI palette.
+theme = TokyoNight Moon
+# <<< claude-terminal-style <<<
+
+# Per-machine overrides (font size, window geometry). The ? makes it optional,
+# so a machine without the file still loads. Not versioned. Last wins.
+config-file = ?~/.config/ghostty/local

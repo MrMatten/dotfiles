@@ -102,28 +102,19 @@
   local = yellow
   remote = green
 
-[color "diff"]
-  meta = yellow bold
-  frag = magenta bold
-  old = red bold
-  new = green bold
-
 [color "status"]
   added = yellow
   changed = green
   untracked = cyan
 
 [core]
-	excludesfile = /Users/mathiasegekvist/.gitignore_global
-	editor = nvim
+	excludesfile = ~/.gitignore_global
 	ignorecase = false
 
 [push]
 	default = simple
 
 [commit]
-	template = /Users/mathiasegekvist/.stCommitMsg
-	gpgsign = true
 
 [init]
 	defaultBranch = main
@@ -134,16 +125,24 @@
 	process = git-lfs filter-process
 	required = true
 
-[user]
-	name = MrMatten
-	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOuWwSXqucZGSm3pS4CZOCVEiIdzbso5rrG3gLNy+YAP
-	email = megekvist@me.com
-
 [gpg]
 	format = ssh
 
-[gpg "ssh"]
-	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+[merge]
+  conflictStyle = zdiff3
 
-[commit]
-  gpgsign = true
+# Identity and machine-specific settings are deliberately NOT versioned.
+# useConfigOnly makes git fail loudly rather than inventing an identity from
+# the hostname if these files are missing. Run settings/git-identity to create
+# them. Later includes override earlier ones.
+[user]
+	useConfigOnly = true
+
+[include]
+	path = ~/.config/git/identity
+
+[includeIf "gitdir:~/Code/"]
+	path = ~/.config/git/identity.work
+
+[include]
+	path = ~/.config/git/local

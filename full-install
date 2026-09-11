@@ -2,7 +2,19 @@
 
 set -e
 
-./apps/shell-tools
-./apps/brew
-./apps/app-store
-./settings/setup
+# Submodules first so everything below can rely on them being populated.
+git submodule update --init --recursive
+
+./shell-tools
+./brew
+./brew-cask
+./app-store
+
+# Symlink the versioned dotfiles into place.
+./settings
+
+# Identity and per-machine tool config (never versioned).
+./git-setup
+
+# Claude Code output styling (centred column + palette).
+./claude-terminal-style/install.sh

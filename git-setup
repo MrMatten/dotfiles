@@ -1,0 +1,88 @@
+#!/usr/bin/env bash
+# Write the git settings that must NOT be versioned: identities, plus config for
+# whichever tools this particular machine actually has.
+#
+#   ./git-setup             prompt for anything not already set
+#   ./git-setup --detect    no prompts; use env vars and what is installed
+#
+# Env overrides: GIT_PERSONAL_NAME GIT_PERSONAL_EMAIL GIT_PERSONAL_SIGNKEY
+#                GIT_WORK_NAME     GIT_WORK_EMAIL     GIT_WORK_SIGNKEY
+set -euo pipefail
+
+DEST="$HOME/.config/git"
+mkdir -p "$DEST"
+DETECT=false
+[[ "${1:-}" == "--detect" ]] && DETECT=true
+
+ask() { # ask <prompt> <current> <envval>
+  local prompt=$1 current=${2:-} val=${3:-}
+  [[ -n "$val" ]] && { printf '%s' "$val"; return; }
+  if $DETECT || [[ ! -t 0 ]]; then printf '%s' "$current"; return; fi
+  read -r -p "  $prompt [${current:-none}]: " val </dev/tty || true
+  printf '%s' "${val:-$current}"
+}
+get() { git config --file "$1" --get "$2" 2>/dev/null || true; }
+
+write_identity() { # <file> <label> <name> <email> <signkey>
+  local f=$1 label=$2 name=$3 email=$4 key=$5
+  {
+    printf '# %s identity for this machine. Not versioned.\n[user]\n' "$label"
+    printf '\tname = %s\n\temail = %s\n' "$name" "$email"
+    [[ -n "$key" ]] && printf '\tsigningkey = %s\n' "$key"
+    printf '\n[commit]\n\tgpgsign = %s\n' "$([[ -n "$key" ]] && echo true || echo false)"
+  } > "$f"
+  echo "  $f -> $name <$email>${key:+ (signing on)}"
+}
+
+echo "Personal identity (everywhere except ~/Code/):"
+P_NAME=$(ask "name"  "$(get "$DEST/identity" user.name)"  "${GIT_PERSONAL_NAME:-}")
+P_MAIL=$(ask "email" "$(get "$DEST/identity" user.email)" "${GIT_PERSONAL_EMAIL:-}")
+P_KEY=$(ask  "signing key (blank = no signing)" "$(get "$DEST/identity" user.signingkey)" "${GIT_PERSONAL_SIGNKEY:-}")
+[[ -z "$P_KEY" && -f "$HOME/.ssh/id_ed25519_personal.pub" ]] && P_KEY="$HOME/.ssh/id_ed25519_personal.pub"
+write_identity "$DEST/identity" "Personal" "$P_NAME" "$P_MAIL" "$P_KEY"
+
+echo "Work identity (inside ~/Code/):"
+W_NAME=$(ask "name"  "$(get "$DEST/identity.work" user.name)"  "${GIT_WORK_NAME:-}")
+W_MAIL=$(ask "email" "$(get "$DEST/identity.work" user.email)" "${GIT_WORK_EMAIL:-}")
+W_KEY=$(ask  "signing key (blank = no signing)" "$(get "$DEST/identity.work" user.signingkey)" "${GIT_WORK_SIGNKEY:-}")
+write_identity "$DEST/identity.work" "Work" "$W_NAME" "$W_MAIL" "$W_KEY"
+
+# Only configure tools this machine actually has.
+{
+  echo "# Tool config for this machine only. Regenerate with ./git-setup"
+  echo
+  for e in nvim vim vi; do
+    command -v "$e" >/dev/null && { printf '[core]\n\teditor = %s\n\n' "$e"; break; }
+  done
+  if command -v delta >/dev/null; then
+    printf '[core]\n\tpager = delta\n\n[interactive]\n\tdiffFilter = delta --color-only\n\n'
+    printf '[delta]\n\tnavigate = true\n\tside-by-side = true\n\n'
+  fi
+  OP=/Applications/1Password.app/Contents/MacOS/op-ssh-sign
+  if [[ -n "${P_KEY}${W_KEY}" ]]; then
+    printf '[gpg]\n\tformat = ssh\n\n[gpg "ssh"]\n'
+    # 1Password if installed, otherwise git signs natively via ssh-keygen
+    [[ -x "$OP" ]] && printf '\tprogram = %s\n' "$OP"
+    printf '\tallowedSignersFile = %s/allowed_signers\n\n' "$DEST"
+  fi
+  [[ -f "$HOME/.stCommitMsg" ]] && printf '[commit]\n\ttemplate = %s/.stCommitMsg\n\n' "$HOME"
+
+  # If a personal SSH alias exists on this machine, push over it while leaving
+  # the versioned remote URLs as https so clones work anywhere without a key.
+  if grep -q "^Host github-personal" "$HOME/.ssh/config" 2>/dev/null; then
+    printf '[url "git@github-personal:"]\n\tpushInsteadOf = https://github.com/\n\n'
+  fi
+} > "$DEST/local"
+echo "  $DEST/local -> editor/pager/signing for what is installed here"
+
+touch "$DEST/allowed_signers"
+add_signer() {
+  local mail=$1 key=$2 pub=""
+  [[ -z "$mail" || -z "$key" ]] && return 0
+  if [[ -f "$key" ]]; then pub=$(cut -d' ' -f1,2 "$key"); else pub=$(printf '%s' "$key" | cut -d' ' -f1,2); fi
+  [[ -z "$pub" ]] && return 0
+  grep -qF "$pub" "$DEST/allowed_signers" 2>/dev/null || printf '%s %s\n' "$mail" "$pub" >> "$DEST/allowed_signers"
+}
+add_signer "$P_MAIL" "$P_KEY"
+add_signer "$W_MAIL" "$W_KEY"
+echo "  $DEST/allowed_signers"
